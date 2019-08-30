@@ -2,6 +2,9 @@ import LoginPage from "./src/screens/LoginPage";
 import PasswordFind from "./src/screens/PasswordFind";
 import MainPage from "./src/screens/MainPage";
 import Category from "./src/screens/Category";
+import Setting from "./src/screens/Setting";
+import SearchResult from "./src/screens/SearchResult";
+import Search from "./src/screens/Search";
 
 import React, { Component } from "react";
 import { View } from "react-native";
@@ -10,7 +13,7 @@ class componentName extends Component {
   render() {
     return (
       <View style={{ flex: 1 }}>
-        <MainPage />
+        <Search />
       </View>
     );
   }
@@ -52,5 +55,6 @@ export default componentName;
 /*
   ! 다운로드한 모듈
   * npm install expo-constants -- 상태바 계산해주는 모듈
+  
 
 */

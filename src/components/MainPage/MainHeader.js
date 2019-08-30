@@ -15,7 +15,7 @@ export default class MainHeader extends Component {
   };
 
   _eachSection = (image, text, size) => {
-    // TODO onPress도 입력으로 받아서 TouchableOpacity에 onPress를 그대로 넘겨주자
+    // ! MainHeader 아래에 ScrollView가 오니까
     return (
       <TouchableOpacity style={styles.section}>
         <View style={styles.picturePart}>
