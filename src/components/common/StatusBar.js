@@ -1,16 +1,16 @@
-import React from 'react';
-import {StyleSheet, View} from 'react-native';
-import Constants from 'expo-constants';
+import React from "react";
+import { StyleSheet, View } from "react-native";
+import Constants from "expo-constants";
 
 export default class StatusBar extends React.Component {
-  render () {
+  render() {
     return <View style={styles.statusBar} />;
   }
 }
 
-const styles = StyleSheet.create ({
+const styles = StyleSheet.create({
   statusBar: {
-    backgroundColor: '#ff000f',
-    height: Constants.statusBarHeight,
-  },
+    backgroundColor: "#ff000f",
+    height: Constants.statusBarHeight
+  }
 });

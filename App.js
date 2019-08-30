@@ -1,46 +1,32 @@
-import React from 'react';
-import {YellowBox} from 'react-native';
-import LoginPage from './src/screens/LoginPage';
-import {Font} from 'expo';
-import PasswordFind from './src/screens/PasswordFind';
+import LoginPage from "./src/screens/LoginPage";
+import PasswordFind from "./src/screens/PasswordFind";
+import MainPage from "./src/screens/MainPage";
+import Category from "./src/screens/Category";
 
-import MainScrollView from './src/screens/MainScrollView';
-import MainCategory from './src/screens/MainCategory';
-import ProjectInfo from './src/screens/ProjectInfo';
-import PortfolioInfo from './src/screens/PortfolioInfo';
+import React, { Component } from "react";
+import { View } from "react-native";
 
-// import {StackNavigator, DrawerNavigator} from 'react-navigation';
+class componentName extends Component {
+  render() {
+    return (
+      <View style={{ flex: 1 }}>
+        <MainPage />
+      </View>
+    );
+  }
+}
 
-// const DrawerNavigation = DrawerNavigator ({
-//   LoginPage: {
-//     screen: LoginPage,
-//   },
-//   PasswordFind: {
-//     screen: PasswordFind,
-//   },
-//   MainScrollView: {
-//     screen: MainScrollView,
-//   },
-//   ProjectInfo: {
-//     screen: ProjectInfo,
-//   },
-//   PortfolioInfo: {
-//     screen: PortfolioInfo,
-//   },
-//   MainCategory: {
-//     screen: MainCategory,
-//   },
-// });
-// const StackNavigation = StackNavigator (
+export default componentName;
+
+// import {createStackNavigator, createAppContainer} from 'react-navigation';
+
+// const AppNavigator = createStackNavigator (
 //   {
-//     DrawerNavigation: {
-//       screen: DrawerNavigation,
+//     LoginPage: {
+//       screen: LoginPage,
 //     },
 //     PasswordFind: {
 //       screen: PasswordFind,
-//     },
-//     LoginPage: {
-//       screen: LoginPage,
 //     },
 //     MainScrollView: {
 //       screen: MainScrollView,
@@ -56,64 +42,12 @@ import PortfolioInfo from './src/screens/PortfolioInfo';
 //     },
 //   },
 //   {
+//     initialRouteKey: 'LoginPage',
 //     headerMode: 'none',
 //   }
 // );
-// export default class App extends React.Component {
-//   constructor () {
-//     super ();
-//     this.state = {
-//       fontLoaded: false,
-//     };
-//     YellowBox.ignoreWarnings ([
-//       'Warning: componentWillMount is deprecated',
-//       'Warning: componentWillReceiveProps is deprecated',
-//       'Warning: componentWillUpdate is deprecated',
-//     ]);
-//   }
-//   async componentDidMount () {
-//     await Font.loadAsync ({
-//       Roboto: require ('./src/assets/fonts/Arial.ttf') /*Fallback Font*/,
-//     });
 
-//     this.setState ({fontLoaded: true});
-//     console.warn ('Fallback font is being used. Please check App.js file.');
-//   }
-//   render () {
-//     return this.state.fontLoaded ? <StackNavigation /> : <Expo.AppLoading />;
-//   }
-// }
-
-import {createStackNavigator, createAppContainer} from 'react-navigation';
-
-const AppNavigator = createStackNavigator (
-  {
-    LoginPage: {
-      screen: LoginPage,
-    },
-    PasswordFind: {
-      screen: PasswordFind,
-    },
-    MainScrollView: {
-      screen: MainScrollView,
-    },
-    ProjectInfo: {
-      screen: ProjectInfo,
-    },
-    PortfolioInfo: {
-      screen: PortfolioInfo,
-    },
-    MainCategory: {
-      screen: MainCategory,
-    },
-  },
-  {
-    initialRouteKey: 'LoginPage',
-    headerMode: 'none',
-  }
-);
-
-export default createAppContainer (AppNavigator);
+// export default createAppContainer (AppNavigator);
 
 /*
   ! 다운로드한 모듈
