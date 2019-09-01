@@ -1,21 +1,25 @@
-import React, { Component } from "react";
-import { View, Text, StyleSheet, ScrollView } from "react-native";
-import MenuDrawer from "react-native-side-drawer";
-import Header from "../components/MainPage/MainHeader";
+import React, {Component} from 'react';
+import {View, Text, StyleSheet, ScrollView, Alert} from 'react-native';
+import MenuDrawer from 'react-native-side-drawer';
+import {Container, Content} from 'native-base';
 
-import StatusBar from "../components/common/StatusBar";
-import { TouchableOpacity } from "react-native-gesture-handler";
+import StatusBar from '../components/common/StatusBar';
+import Advertise from '../components/common/SwiperFlatList';
+import Category from '../components/MainPage/Category';
+import TimeLine from '../components/MainPage/TimeLine';
+
+import Header from '../components/MainPage/MainHeader';
 
 class MainPage extends Component {
-  constructor(props) {
-    super(props);
+  constructor (props) {
+    super (props);
     this.state = {
-      open: false
+      open: false,
     };
   }
 
   toggleOpen = () => {
-    this.setState({ open: !this.state.open });
+    this.setState ({open: !this.state.open});
   };
 
   drawerContent = () => {
@@ -23,9 +27,11 @@ class MainPage extends Component {
       <View
         style={{
           flex: 1,
-          backgroundColor: "#38C8EC",
-          justifyContent: "center",
-          alignItems: "center"
+          backgroundColor: '#38C8EC',
+          justifyContent: 'center',
+          alignItems: 'center',
+          zIndex: 2,
+          position: 'absolute',
         }}
       >
         <Text>Drawer</Text>
@@ -33,28 +39,30 @@ class MainPage extends Component {
     );
   };
 
-  render() {
+  render () {
     return (
       <View style={styles.container}>
         <StatusBar />
-        <View style={{ flex: 1 }}>
+        <View style={{flex: 1}}>
           <MenuDrawer
             open={this.state.open}
             drawerPercentage={80}
             animationTime={250}
             opacity={0.4}
-            drawerContent={this.drawerContent()}
+            drawerContent={this.drawerContent ()}
           >
+            <Header />
             <ScrollView>
-              <View style={{ height: 170, backgroundColor: "#bbb" }}>
-                <Text>광고가 올 공간</Text>
+              <View style={{height: 170}}>
+                <Advertise />
               </View>
-              <View style={{ height: 170, backgroundColor: "skyblue" }}>
-                <Text>카테고리 리스트가 올 공간</Text>
+              <View style={{height: 170, marginTop: 10, marginBottom: 10}}>
+                <Category />
               </View>
-              <View style={{ height: 1000, backgroundColor: "yellow" }}>
-                <Text>타임라인이 올 공간</Text>
-              </View>
+              <Content>
+                <TimeLine />
+                <TimeLine />
+              </Content>
             </ScrollView>
           </MenuDrawer>
         </View>
@@ -65,8 +73,8 @@ class MainPage extends Component {
 
 export default MainPage;
 
-const styles = StyleSheet.create({
+const styles = StyleSheet.create ({
   container: {
-    flex: 1
-  }
+    flex: 1,
+  },
 });

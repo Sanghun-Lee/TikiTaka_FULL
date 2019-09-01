@@ -1,25 +1,29 @@
-import LoginPage from "./src/screens/LoginPage";
-import PasswordFind from "./src/screens/PasswordFind";
-import MainPage from "./src/screens/MainPage";
-import Category from "./src/screens/Category";
-import Setting from "./src/screens/Setting";
-import SearchResult from "./src/screens/SearchResult";
-import Search from "./src/screens/Search";
+import LoginPage from './src/screens/LoginPage';
+import PasswordFind from './src/screens/PasswordFind';
+import MainPage from './src/screens/MainPage';
+import Category from './src/screens/Category';
+import Setting from './src/screens/Setting';
+import SearchResult from './src/screens/SearchResult';
+import Search from './src/screens/Search';
+import ProjectList from './src/screens/ProjectList';
+import ProjectScreen from './src/screens/ProjectScreen';
+import FreelancerList from './src/screens/FreelancerList';
+import FreelancerScreen from './src/screens/FreelancerScreen';
 
-import React, { Component } from "react";
-import { View } from "react-native";
+import React, {Component} from 'react';
+import {View} from 'react-native';
 
-class componentName extends Component {
-  render() {
+class App extends Component {
+  render () {
     return (
-      <View style={{ flex: 1 }}>
-        <Search />
+      <View style={{flex: 1}}>
+        <FreelancerScreen />
       </View>
     );
   }
 }
 
-export default componentName;
+export default App;
 
 // import {createStackNavigator, createAppContainer} from 'react-navigation';
 
