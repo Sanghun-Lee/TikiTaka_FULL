@@ -9,73 +9,57 @@ import {
   Image,
 } from 'react-native';
 
-import Icon from '../../components/common/Icon';
+import {Ionicons} from '@expo/vector-icons';
 
 // create a component
 class Category extends Component {
-  render () {
+  render() {
     return (
       <View style={styles.container}>
         <View style={styles.eachSection}>
-          {this._CategoryImage (
-            require ('../../../assets/images/MainPage/Category/KateDesign1.png'),
-            () => Alert.alert ('Design Select'),
-            '디자인'
-          )}
-          {this._CategoryImage (
-            require ('../../../assets/images/MainPage/Category/KateMovie.png'),
-            () => Alert.alert ('Movie Select'),
-            '영상'
-          )}
-          {this._CategoryImage (
-            require ('../../../assets/images/MainPage/Category/KateTrans.png'),
-            () => Alert.alert ('Translate Select'),
-            '번역'
-          )}
-          {this._CategoryImage (
-            require ('../../../assets/images/MainPage/Category/KateCont.png'),
-            () => Alert.alert ('Contents Select'),
-            '컨텐츠 제작'
-          )}
+          {this._CategoryIcon('md-brush', this._CategoryOnPress, '디자인')}
+          {this._CategoryIcon('logo-youtube', this._CategoryOnPress, '영상')}
+          {this._CategoryIcon('logo-google', this._CategoryOnPress, '번역')}
+          {this._CategoryIcon('logo-python', this._CategoryOnPress, '코딩')}
         </View>
         <View style={styles.eachSection}>
-          {this._CategoryImage (
-            require ('../../../assets/images/MainPage/Category/KateMarket.png'),
-            () => Alert.alert ('Marketing Select'),
-            '마케팅'
+          {this._CategoryIcon(
+            'ios-musical-notes',
+            this._CategoryOnPress,
+            '음악'
           )}
-          {this._CategoryImage (
-            require ('../../../assets/images/MainPage/Category/KateFile.png'),
-            () => Alert.alert ('File Select'),
-            '문서'
-          )}
-          {this._CategoryImage (
-            require ('../../../assets/images/MainPage/Category/Kateless.png'),
-            () => Alert.alert ('Sutdy Select'),
-            '스터디'
-          )}
-          {this._CategoryImage (
-            require ('../../../assets/images/MainPage/Category/KateMore.png'),
-            () => Alert.alert ('See More Select'),
-            '기타'
-          )}
+          {this._CategoryIcon('ios-cog', this._CategoryOnPress, '공학')}
+          {this._CategoryIcon('ios-book', this._CategoryOnPress, '스터디')}
+          {this._CategoryIcon('ios-more', this._CategoryOnPress, '기타')}
         </View>
       </View>
     );
   }
 
-  _CategoryImage (source, onPress, text) {
+  _CategoryImage(source, onPress, text) {
     return (
       <TouchableOpacity onPress={onPress} style={{width: 44, height: 57}}>
         <Image source={source} style={{width: 44, height: 44}} />
-        <Text>{text}</Text>
+        <Text style={{textAlign: 'center'}}>{text}</Text>
       </TouchableOpacity>
     );
   }
+  _CategoryIcon(name, onPress, text) {
+    return (
+      <TouchableOpacity onPress={onPress} style={{witdh: 44, height: 57}}>
+        <Ionicons name={name} size={44} color="#38C8EC" />
+        <Text style={{textAlign: 'center'}}>{text}</Text>
+      </TouchableOpacity>
+    );
+  }
+
+  _CategoryOnPress = () => {
+    this.props.navigation.navigate('Category');
+  };
 }
 
 // define your styles
-const styles = StyleSheet.create ({
+const styles = StyleSheet.create({
   container: {
     flex: 1,
     flexDirection: 'column',

@@ -3,15 +3,15 @@ import {StyleSheet, Text, View, TouchableOpacity, Image} from 'react-native';
 import MenuDrawer from 'react-native-side-drawer';
 
 export default class MainHeader extends Component {
-  constructor (props) {
-    super (props);
+  constructor(props) {
+    super(props);
     this.state = {
       open: false,
     };
   }
 
   toggleOpen = () => {
-    this.setState ({open: !this.state.open});
+    this.setState({open: !this.state.open});
   };
 
   _eachSection = (image, text, size) => {
@@ -36,7 +36,7 @@ export default class MainHeader extends Component {
           <View style={styles.backButtonPart}>
             <TouchableOpacity onPress={this.toggleOpen}>
               <Image
-                source={require ('../../../assets/images/SideBack.png')}
+                source={require('../../../assets/images/SideBack.png')}
                 style={{height: 20, width: 20}}
               />
             </TouchableOpacity>
@@ -45,7 +45,7 @@ export default class MainHeader extends Component {
             <TouchableOpacity style={{marginTop: 5}}>
               <Image
                 style={{width: 85, height: 85}}
-                source={require ('../../../assets/images/SubPage/SideProfile01.png')}
+                source={require('../../../assets/images/SubPage/SideProfile01.png')}
               />
               <Text style={{color: 'white', fontSize: 15, textAlign: 'center'}}>
                 고민우
@@ -54,23 +54,23 @@ export default class MainHeader extends Component {
           </View>
         </View>
         {/* 채팅방, 내 프로젝트, 동아리, 좋아요 목록 이 4 파트 */}
-        {this._eachSection (
-          require ('../../../assets/images/SubPage/SubMessage.png'),
+        {this._eachSection(
+          require('../../../assets/images/SubPage/SubMessage.png'),
           '채팅방',
           {width: 53, height: 50}
         )}
-        {this._eachSection (
-          require ('../../../assets/images/SubPage/SubMyProject.png'),
+        {this._eachSection(
+          require('../../../assets/images/SubPage/SubMyProject.png'),
           '내 프로젝트',
           {width: 49.12, height: 50}
         )}
-        {this._eachSection (
-          require ('../../../assets/images/SubPage/SubMyCircle.png'),
+        {this._eachSection(
+          require('../../../assets/images/SubPage/SubMyCircle.png'),
           '내 동아리',
           {width: 51, height: 35.75}
         )}
-        {this._eachSection (
-          require ('../../../assets/images/SubPage/SubMyLike.png'),
+        {this._eachSection(
+          require('../../../assets/images/SubPage/SubMyLike.png'),
           '좋아요 목록',
           {width: 51, height: 37.7}
         )}
@@ -84,11 +84,11 @@ export default class MainHeader extends Component {
                 marginLeft: 15,
               }}
               onPress={() => {
-                this.props.navigation.naviagte ('Setting');
+                this.props.navigation.naviagte('Setting');
               }}
             >
               <Image
-                source={require ('../../../assets/images/SubPage/SubSetting.png')}
+                source={require('../../../assets/images/SubPage/SubSetting.png')}
                 style={{height: 20, width: 20}}
               />
             </TouchableOpacity>
@@ -102,7 +102,7 @@ export default class MainHeader extends Component {
               }}
             >
               <Image
-                source={require ('../../../assets/images/SubPage/SubLogout.png')}
+                source={require('../../../assets/images/SubPage/SubLogout.png')}
                 style={{height: 20, width: 20}}
               />
             </TouchableOpacity>
@@ -112,13 +112,13 @@ export default class MainHeader extends Component {
     );
   };
 
-  render () {
+  render() {
     return (
       <View style={styles.container}>
         <View style={{flex: 1}}>
           <MenuDrawer
             open={this.state.open} // {이 안이 true이면 drawer가 나온다}
-            drawerContent={this.drawerContent ()} // 출력될 Drawer의 내용을 호출
+            drawerContent={this.drawerContent()} // 출력될 Drawer의 내용을 호출
             drawerPercentage={80} // Drawer이 나오는 사이즈 조절
             animationTime={250}
             overlay={true}
@@ -126,7 +126,7 @@ export default class MainHeader extends Component {
           >
             <TouchableOpacity onPress={this.toggleOpen}>
               <Image
-                source={require ('../../../assets/images/MainPage/TitleBarSubPage.png')}
+                source={require('../../../assets/images/MainPage/TitleBarSubPage.png')}
                 style={styles.searchIconImage}
               />
             </TouchableOpacity>
@@ -137,11 +137,11 @@ export default class MainHeader extends Component {
         <TouchableOpacity
           style={styles.searchIconView}
           onPress={() => {
-            this.props.navigation.navigate ('SearchScreen');
+            this.props.navigation.navigate('SearchScreen');
           }}
         >
           <Image
-            source={require ('../../../assets/images/MainPage/TitleBarSearch.png')}
+            source={require('../../../assets/images/MainPage/TitleBarSearch.png')}
             style={styles.searchIconImage}
           />
         </TouchableOpacity>
@@ -151,13 +151,13 @@ export default class MainHeader extends Component {
 }
 
 _handleSearchButton = () => {
-  this.props.navigation.navigate ('Search');
+  this.props.navigation.navigate('Search');
 };
 _handlePressBackButton = () => {
-  this.props.navigation.navigate (this.props.postScreen);
+  this.props.navigation.navigate(this.props.postScreen);
 };
 
-const styles = StyleSheet.create ({
+const styles = StyleSheet.create({
   container: {
     backgroundColor: '#35CBEE',
     flexDirection: 'row',
@@ -192,6 +192,7 @@ const styles = StyleSheet.create ({
     flexDirection: 'column',
     backgroundColor: '#38C8EC',
     padding: 10,
+    zIndex: 3,
   },
   topSection: {
     flex: 2,

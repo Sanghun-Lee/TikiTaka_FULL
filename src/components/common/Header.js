@@ -1,6 +1,7 @@
-import React, { Component } from "react";
-import { StyleSheet, Text, View, TouchableOpacity, Image } from "react-native";
-import PropTypes from "prop-types";
+import React, {Component} from 'react';
+import {StyleSheet, Text, View, TouchableOpacity, Image} from 'react-native';
+import PropTypes from 'prop-types';
+import {Ionicons} from '@expo/vector-icons';
 
 export default class Header extends Component {
   render() {
@@ -8,64 +9,59 @@ export default class Header extends Component {
       <View style={styles.container}>
         <TouchableOpacity
           style={styles.searchIconView}
-          onPress={() => {
-            this.props.navigation.navigate(this.props.postScreen);
-          }}
+          onPress={this._PressBackButton}
         >
-          <Image
-            source={require("../../../assets/images/Header/SideBack.png")}
-            style={styles.searchIconImage}
-          />
+          <Ionicons name="ios-arrow-back" size={28} color="white" />
         </TouchableOpacity>
         <Text style={styles.headerText}>티키타카</Text>
         <TouchableOpacity
           style={styles.searchIconView}
-          onPress={() => {
-            this.props.navigation.navigate("SearchScreen");
-          }}
+          onPress={this._PressSearchButton}
         >
-          <Image
-            source={require("../../../assets/images/Header/TitleBarSearch.png")}
-            style={styles.searchIconImage}
-          />
+          <Ionicons name="ios-search" size={28} color="white" />
         </TouchableOpacity>
       </View>
     );
   }
+
+  _PressBackButton = () => {
+    this.props.navigation.goBack();
+  };
+  _PressSearchButton = () => {
+    this.props.navigation.navigate('Search');
+  };
 }
 
 _handleSearchButton = () => {
-  this.props.navigation.navigate("Search");
+  this.props.navigation.navigate('Search');
 };
 _handlePressBackButton = () => {};
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: "#35CBEE",
-    flexDirection: "row",
-    height: 43.26
+    backgroundColor: '#35CBEE',
+    flexDirection: 'row',
+    height: 43.26,
   },
   backTextStyle: {
     fontSize: 13,
-    color: "white",
-    alignItems: "center"
+    color: 'white',
+    alignItems: 'center',
   },
   headerText: {
     flex: 6,
     fontSize: 16,
-    color: "white",
-    textAlign: "center",
-    textAlignVertical: "center"
+    color: 'white',
+    textAlign: 'center',
+    textAlignVertical: 'center',
   },
   searchIconView: {
     flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-    flexDirection: "row",
-    marginLeft: 13
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   searchIconImage: {
     height: 20,
-    width: 20
-  }
+    width: 20,
+  },
 });

@@ -9,11 +9,11 @@ import Subtitle from '../components/common/Subtitle';
 
 // create a component
 class ProjectScreen extends Component {
-  render () {
+  render() {
     return (
       <View style={styles.container}>
         <StatusBar />
-        <Header />
+        <Header navigation={this.props.navigation} />
         <ScrollView>
           <ProjectPicture />
           <Subtitle subtitle="프로젝트 참여인원" />
@@ -32,7 +32,7 @@ class ProjectScreen extends Component {
 }
 
 // define your styles
-const styles = StyleSheet.create ({
+const styles = StyleSheet.create({
   container: {
     flex: 1,
   },

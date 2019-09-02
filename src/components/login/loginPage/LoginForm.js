@@ -1,7 +1,7 @@
-import React, { Component } from "react";
-import { View, StyleSheet } from "react-native";
-import LoginInput from "./LoginInput";
-import LoginButton from "./LoginButton";
+import React, {Component} from 'react';
+import {View, StyleSheet} from 'react-native';
+import LoginInput from './LoginInput';
+import LoginButton from './LoginButton';
 
 class LoginForm extends Component {
   render() {
@@ -12,11 +12,15 @@ class LoginForm extends Component {
           <LoginInput isPassword={true} />
         </View>
         <View style={styles.loginButtonForm}>
-          <LoginButton onPress={() => alert("LoginButton Press")} />
+          <LoginButton onPress={this._handleLoginButtonOnPress} />
         </View>
       </View>
     );
   }
+
+  _handleLoginButtonOnPress = () => {
+    this.props.navigation.navigate('MainPage');
+  };
 }
 
 export default LoginForm;
@@ -24,16 +28,16 @@ export default LoginForm;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    flexDirection: "row"
+    flexDirection: 'row',
   },
   textInputForm: {
     flex: 2,
-    justifyContent: "space-evenly",
-    alignItems: "flex-end",
-    marginRight: 5
+    justifyContent: 'space-evenly',
+    alignItems: 'flex-end',
+    marginRight: 5,
   },
   loginButtonForm: {
     flex: 1,
-    justifyContent: "center"
-  }
+    justifyContent: 'center',
+  },
 });

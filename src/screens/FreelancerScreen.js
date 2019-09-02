@@ -6,23 +6,25 @@ import StatusBar from '../components/common/StatusBar';
 import Header from '../components/common/Header';
 import FreelancerPicture from '../components/common/SwiperFlatList';
 import Subtitle from '../components/common/Subtitle';
+import PictureAndGrade from '../components/freelancer/PictureAndGrade';
+import Contents from '../components/freelancer/Contents';
 
 // create a component
 class FreelancerScreen extends Component {
-  render () {
+  render() {
     return (
       <View style={styles.container}>
         <StatusBar />
-        <Header />
+        <Header navigation={this.props.navigation} />
         <ScrollView>
           <FreelancerPicture />
           <Subtitle subtitle="사용자 이름" />
           <View style={{height: 130}}>
-            <Text>사용자 사진과 별점이 오는 장소</Text>
+            <PictureAndGrade />
           </View>
           <Subtitle subtitle="" />
           <View style={{height: 400}}>
-            <Text>상세 사항이 오는 곳</Text>
+            <Contents />
           </View>
           <Subtitle subtitle="" />
           <View style={{height: 200}}>
@@ -35,7 +37,7 @@ class FreelancerScreen extends Component {
 }
 
 // define your styles
-const styles = StyleSheet.create ({
+const styles = StyleSheet.create({
   container: {
     flex: 1,
   },

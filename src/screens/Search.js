@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, {Component} from 'react';
 import {
   StyleSheet,
   Text,
@@ -7,19 +7,20 @@ import {
   TextInput,
   Image,
   AsyncStorage,
-  ScrollView
-} from "react-native";
+  ScrollView,
+} from 'react-native';
 
-import uuidv1 from "uuid/v1";
-import StatusBar from "../components/common/StatusBar";
-import Subtitle from "../components/common/Subtitle";
-import HistoryItem from "../components/Search/HistoryItem";
+import {Ionicons} from '@expo/vector-icons';
+import uuidv1 from 'uuid/v1';
+import StatusBar from '../components/common/StatusBar';
+import Subtitle from '../components/common/Subtitle';
+import HistoryItem from '../components/Search/HistoryItem';
 
 export default class Search2 extends Component {
   state = {
-    searchValue: "",
+    searchValue: '',
     loadedSearchHistory: false,
-    History: {}
+    History: {},
   };
 
   componentDidMount = () => {
@@ -27,7 +28,7 @@ export default class Search2 extends Component {
   };
 
   render() {
-    const { searchValue, loadedSearchHistory, History } = this.state;
+    const {searchValue, loadedSearchHistory, History} = this.state;
     // console.log (History);
     return (
       <View style={styles.container}>
@@ -35,20 +36,15 @@ export default class Search2 extends Component {
         <View style={styles.searchHeader}>
           <TouchableOpacity
             style={styles.searchIconView}
-            onPress={() => {
-              this.props.navigation.navigate("SearchResult");
-            }}
+            onPress={this._PressBackButton}
           >
-            <Image
-              source={require("../../assets/images/Search/SideBack.png")}
-              style={{ width: 20, height: 20 }}
-            />
+            <Ionicons name="ios-arrow-back" size={28} color="white" />
           </TouchableOpacity>
           <TextInput
             style={styles.searchBar}
             value={searchValue}
             onChangeText={this._controlSearchText}
-            returnKeyType={"done"}
+            returnKeyType={'done'}
             autoCorrect={false}
             multiline={false}
             onSubmitEditing={this._PressSearchButton}
@@ -57,10 +53,7 @@ export default class Search2 extends Component {
             onPress={this._PressSearchButton}
             style={styles.searchIconView}
           >
-            <Image
-              source={require("../../assets/images/Search/TitleBarSearch.png")}
-              style={{ width: 20, height: 20 }}
-            />
+            <Ionicons name="ios-search" size={28} color="white" />
           </TouchableOpacity>
         </View>
         {loadedSearchHistory ? (
@@ -79,7 +72,7 @@ export default class Search2 extends Component {
         ) : (
           <ScrollView>
             <Subtitle subtitle="최근 검색 목록" />
-            <View style={{ alignItems: "center" }}>
+            <View style={{alignItems: 'center'}}>
               <Text>최근 검색 목록이 없습니다.</Text>
             </View>
           </ScrollView>
@@ -88,19 +81,23 @@ export default class Search2 extends Component {
     );
   }
 
+  _PressBackButton = () => {
+    this.props.navigation.goBack();
+  };
+
   _controlSearchText = text => {
-    this.setState({ searchValue: text });
+    this.setState({searchValue: text});
   };
 
   _loadHistory = async () => {
     try {
-      const History = await AsyncStorage.getItem("History");
+      const History = await AsyncStorage.getItem('History');
       const parsedHistory = JSON.parse(History);
       console.log(!parsedHistory);
       if (Object.keys(parsedHistory).length) {
-        this.setState({ loadedSearchHistory: true, History: parsedHistory });
+        this.setState({loadedSearchHistory: true, History: parsedHistory});
       } else {
-        this.setState({ History: parsedHistory });
+        this.setState({History: parsedHistory});
       }
     } catch (err) {
       console.log(err);
@@ -108,32 +105,32 @@ export default class Search2 extends Component {
   };
 
   _PressSearchButton = () => {
-    console.log("검색버튼이 눌렸습니다.");
-    console.log("입력 값_ searchValue");
+    console.log('검색버튼이 눌렸습니다.');
+    console.log('입력 값_ searchValue');
     console.log(this.state.searchValue);
-    this.props.navigation.navigate("SearchResult");
-    const { searchValue } = this.state;
-    if (searchValue !== "") {
+    this.props.navigation.navigate('SearchResult');
+    const {searchValue} = this.state;
+    if (searchValue !== '') {
       this.setState(prevState => {
         const ID = uuidv1();
         const newValueObject = {
           [ID]: {
             id: ID,
             text: searchValue,
-            createdAt: Date.now()
-          }
+            createdAt: Date.now(),
+          },
         };
         const newState = {
           ...prevState,
-          searchValue: "",
+          searchValue: '',
           History: {
             ...prevState.History,
-            ...newValueObject
-          }
+            ...newValueObject,
+          },
         };
         // this.setState({ loadedSearchHistory: true });
         this._saveHistory(newState.History);
-        return { ...newState };
+        return {...newState};
       });
     }
   };
@@ -150,17 +147,17 @@ export default class Search2 extends Component {
       delete History[id];
       const newState = {
         ...prevState,
-        ...History
+        ...History,
       };
       this._saveHistory(newState.History);
-      return { ...newState };
+      return {...newState};
     });
   };
 
   _saveHistory = newHistory => {
     // console.log (JSON.stringify(newHistory));
     const saveHistory = AsyncStorage.setItem(
-      "History",
+      'History',
       JSON.stringify(newHistory)
     );
   };
@@ -169,56 +166,56 @@ export default class Search2 extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    flexDirection: "column"
+    flexDirection: 'column',
   },
   searchHistoryRow: {
-    flexDirection: "row",
-    backgroundColor: "white",
-    borderBottomColor: "#DBDBDB",
+    flexDirection: 'row',
+    backgroundColor: 'white',
+    borderBottomColor: '#DBDBDB',
     borderBottomWidth: 0.5,
-    height: 38
+    height: 38,
   },
   searchHistoryTextTouchable: {
     flex: 6,
-    justifyContent: "center",
-    alignItems: "flex-start"
+    justifyContent: 'center',
+    alignItems: 'flex-start',
   },
   searchHistoryText: {
     fontSize: 14,
-    color: "#040505",
-    marginLeft: 18
+    color: '#040505',
+    marginLeft: 18,
   },
   searchHistoryDeleteTouchable: {
     flex: 1,
-    justifyContent: "center",
-    alignItems: "center"
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   searchHistoryDelete: {
     height: 15,
-    width: 15
+    width: 15,
   },
   searchBar: {
     flex: 7,
-    backgroundColor: "white",
+    backgroundColor: 'white',
     margin: 7,
     marginLeft: 11,
     borderRadius: 5,
     width: 15,
     padding: 3,
-    paddingLeft: 8
+    paddingLeft: 8,
   },
   searchHeader: {
-    backgroundColor: "#35CBEE",
-    flexDirection: "row",
-    height: 43.26
+    backgroundColor: '#35CBEE',
+    flexDirection: 'row',
+    height: 43.26,
   },
   searchIconView: {
     flex: 1,
-    justifyContent: "center",
-    alignItems: "center"
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   cancelImageStyle: {
     height: 15,
-    width: 15
-  }
+    width: 15,
+  },
 });

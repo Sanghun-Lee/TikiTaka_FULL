@@ -1,39 +1,39 @@
-import React, { Component } from "react";
+import React, {Component} from 'react';
 import {
   StyleSheet,
   Text,
   View,
   ScrollView,
   TouchableOpacity,
-  Image
-} from "react-native";
+  Image,
+} from 'react-native';
 
-import StatusBar from "../components/common/StatusBar";
-import Header from "../components/common/Header";
-import Subtitle from "../components/common/Subtitle";
-import ProjectThumbnail from "../components/project/ProjectThumbnail";
-import FreelancerThumbnail from "../components/freelancer/FreelancerThumbnail";
+import StatusBar from '../components/common/StatusBar';
+import Header from '../components/common/Header';
+import Subtitle from '../components/common/Subtitle';
+import ProjectThumbnail from '../components/project/ProjectThumbnail';
+import FreelancerThumbnail from '../components/freelancer/FreelancerThumbnail';
 
 const projectList = [
   {
-    title: "프로젝트2",
-    imgSrc: require("../../assets/images/Project/ProjectThumbnail/ProjectImage.png"),
+    title: '프로젝트2',
+    imgSrc: require('../../assets/images/Project/ProjectThumbnail/ProjectImage.png'),
     price: 20000,
-    endDueDate: "19.08.31",
+    endDueDate: '19.08.31',
     Recruitment: 4,
-    major: "C, C++"
-  }
+    major: 'C, C++',
+  },
 ];
 
 const freelancerList = [
   {
-    major: "산업디자인",
-    collage: "영남대학교",
+    major: '산업디자인',
+    collage: '영남대학교',
     rating: 4,
     evaluation: 13,
     grade: 3,
-    imgSrc: require("../../assets/images/Freelancer/FreelancerThumbnail/FreelancerImage.png")
-  }
+    imgSrc: require('../../assets/images/Freelancer/FreelancerThumbnail/FreelancerImage.png'),
+  },
 ];
 
 export default class SearchResult extends Component {
@@ -41,7 +41,7 @@ export default class SearchResult extends Component {
     return (
       <View style={styles.container}>
         <StatusBar />
-        <Header />
+        <Header navigation={this.props.navigation} />
 
         <ScrollView>
           <Subtitle subtitle="검색 결과 - 프로젝트" />
@@ -55,17 +55,18 @@ export default class SearchResult extends Component {
                 Recruitment={projectList.Recruitment}
                 major={projectList.major}
                 key={index}
+                navigation={this.props.navigation}
               />
             );
           })}
           <View style={styles.tapMore}>
             <TouchableOpacity
               onPress={this._handlePressProjectMore}
-              style={{ flex: 1, flexDirection: "row", alignItems: "center" }}
+              style={{flex: 1, flexDirection: 'row', alignItems: 'center'}}
             >
               <Text style={styles.tapMoreText}>더 보기</Text>
               <Image
-                source={require("../../assets/images/Freelancer/FreelancerThumbnail/SearchMoreIcon.png")}
+                source={require('../../assets/images/Freelancer/FreelancerThumbnail/SearchMoreIcon.png')}
                 style={styles.tapMoreIcon}
               />
             </TouchableOpacity>
@@ -81,17 +82,18 @@ export default class SearchResult extends Component {
                 evaluation={freelancerList.evaluation}
                 imgSrc={freelancerList.imgSrc}
                 key={index}
+                navigation={this.props.navigation}
               />
             );
           })}
           <View style={styles.tapMore}>
             <TouchableOpacity
-              style={{ flex: 1, flexDirection: "row", alignItems: "center" }}
+              style={{flex: 1, flexDirection: 'row', alignItems: 'center'}}
               onPress={this._handlePressFreelancerMore}
             >
               <Text style={styles.tapMoreText}>더 보기</Text>
               <Image
-                source={require("../../assets/images/Freelancer/FreelancerThumbnail/SearchMoreIcon.png")}
+                source={require('../../assets/images/Freelancer/FreelancerThumbnail/SearchMoreIcon.png')}
                 style={styles.tapMoreIcon}
               />
             </TouchableOpacity>
@@ -103,31 +105,31 @@ export default class SearchResult extends Component {
   }
 
   _handlePressProjectMore = () => {
-    this.props.navigation.navigate("ProjectList");
+    this.props.navigation.navigate('ProjectList');
   };
   _handlePressFreelancerMore = () => {
-    this.props.navigation.navigate("FreelancerList");
+    this.props.navigation.navigate('FreelancerList');
   };
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1
+    flex: 1,
   },
   tapMore: {
     height: 35,
-    alignItems: "flex-end"
+    alignItems: 'flex-end',
   },
   tapMoreText: {
-    textAlign: "right",
-    textAlignVertical: "center",
+    textAlign: 'right',
+    textAlignVertical: 'center',
     fontSize: 10,
-    marginRight: 8
+    marginRight: 8,
   },
   tapMoreIcon: {
     marginLeft: 3,
     width: 5.31,
     height: 8.69,
-    marginRight: 10
-  }
+    marginRight: 10,
+  },
 });

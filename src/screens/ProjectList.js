@@ -13,7 +13,7 @@ import {Ionicon} from 'react-native-vector-icons/Ionicons';
 const projectList = [
   {
     title: '프로젝트2',
-    imgSrc: require ('../../assets/images/Project/ProjectThumbnail/ProjectImage.png'),
+    imgSrc: require('../../assets/images/Project/ProjectThumbnail/ProjectImage.png'),
     price: 20000,
     endDueDate: '19.08.31',
     Recruitment: 4,
@@ -23,18 +23,18 @@ const projectList = [
 
 // create a component
 class ProjectList extends Component {
-  render () {
+  render() {
     return (
       <View style={styles.container}>
         <StatusBar />
-        <Header />
+        <Header navigation={this.props.navigation} />
         <Subtitle subtitle="프로젝트" />
         <ActionButton
           buttonColor="rgba(231, 76, 60, 1)"
-          onPress={() => Alert.alert ('Filterbutton Clicked')}
+          onPress={() => Alert.alert('Filterbutton Clicked')}
         />
         <ScrollView>
-          {projectList.map ((projectList, index) => {
+          {projectList.map((projectList, index) => {
             return (
               <ProjectThumbnail
                 imgSrc={projectList.imgSrc}
@@ -44,6 +44,7 @@ class ProjectList extends Component {
                 Recruitment={projectList.Recruitment}
                 major={projectList.major}
                 key={index}
+                navigation={this.props.navigation}
               />
             );
           })}
@@ -54,7 +55,7 @@ class ProjectList extends Component {
 }
 
 // define your styles
-const styles = StyleSheet.create ({
+const styles = StyleSheet.create({
   container: {
     flex: 1,
   },

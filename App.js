@@ -10,51 +10,45 @@ import ProjectScreen from './src/screens/ProjectScreen';
 import FreelancerList from './src/screens/FreelancerList';
 import FreelancerScreen from './src/screens/FreelancerScreen';
 
-import React, {Component} from 'react';
-import {View} from 'react-native';
+import ChattingList from './src/screens/not complete/ChattingList';
+import MyCircle from './src/screens/not complete/MyCircle';
+import MyProject from './src/screens/not complete/MyProject';
+import MyPage from './src/screens/not complete/MyPage';
 
-class App extends Component {
-  render () {
-    return (
-      <View style={{flex: 1}}>
-        <FreelancerScreen />
-      </View>
-    );
+import React, {Component} from 'react';
+import {createStackNavigator, createAppContainer} from 'react-navigation';
+
+const AppNavigator = createStackNavigator(
+  {
+    LoginPage: {screen: LoginPage},
+    PasswordFind: {screen: PasswordFind},
+    MainPage: {screen: MainPage},
+    Category: {screen: Category},
+    Setting: {screen: Setting},
+    SearchResult: {screen: SearchResult},
+    Search: {screen: Search},
+    ProjectList: {screen: ProjectList},
+    ProjectScreen: {screen: ProjectScreen},
+    FreelancerList: {screen: FreelancerList},
+    FreelancerScreen: {screen: FreelancerScreen},
+    ChattingList: {screen: ChattingList},
+    MyCircle: {screen: MyCircle},
+    MyProject: {screen: MyProject},
+    MyPage: {screen: MyPage},
+  },
+  {
+    initialRouteKey: 'LoginPage',
+    headerMode: 'none',
+  }
+);
+
+let Navigation = createAppContainer(AppNavigator);
+
+export default class App extends Component {
+  render() {
+    return <Navigation />;
   }
 }
-
-export default App;
-
-// import {createStackNavigator, createAppContainer} from 'react-navigation';
-
-// const AppNavigator = createStackNavigator (
-//   {
-//     LoginPage: {
-//       screen: LoginPage,
-//     },
-//     PasswordFind: {
-//       screen: PasswordFind,
-//     },
-//     MainScrollView: {
-//       screen: MainScrollView,
-//     },
-//     ProjectInfo: {
-//       screen: ProjectInfo,
-//     },
-//     PortfolioInfo: {
-//       screen: PortfolioInfo,
-//     },
-//     MainCategory: {
-//       screen: MainCategory,
-//     },
-//   },
-//   {
-//     initialRouteKey: 'LoginPage',
-//     headerMode: 'none',
-//   }
-// );
-
-// export default createAppContainer (AppNavigator);
 
 /*
   ! 다운로드한 모듈
