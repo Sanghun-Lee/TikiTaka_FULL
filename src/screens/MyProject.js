@@ -1,14 +1,11 @@
 //import liraries
 import React, {Component} from 'react';
-import {View, StyleSheet, Alert, ScrollView} from 'react-native';
+import {View, StyleSheet, ScrollView} from 'react-native';
 
 import StatusBar from '../components/common/StatusBar';
-import Header from '../components/common/Header';
+import Header from '../components/FavoriteList/Header';
 import Subtitle from '../components/common/Subtitle';
 import ProjectThumbnail from '../components/project/ProjectThumbnail';
-
-import ActionButton from 'react-native-action-button';
-import {Ionicon} from 'react-native-vector-icons/Ionicons';
 
 const projectList = [
   {
@@ -22,18 +19,14 @@ const projectList = [
 ];
 
 // create a component
-class ProjectList extends Component {
+class MyProject extends Component {
   render () {
     return (
       <View style={styles.container}>
         <StatusBar />
-        <Header navigation={this.props.navigation} />
-        <Subtitle subtitle="프로젝트" />
-        <ActionButton
-          buttonColor="rgba(231, 76, 60, 1)"
-          onPress={() => Alert.alert ('Filterbutton Clicked')}
-        />
+        <Header navigation={this.props.navigation} title="내 프로젝트" />
         <ScrollView>
+          <Subtitle subtitle="내 프로젝트 목록" />
           {projectList.map ((projectList, index) => {
             return (
               <ProjectThumbnail
@@ -62,4 +55,4 @@ const styles = StyleSheet.create ({
 });
 
 //make this component available to the app
-export default ProjectList;
+export default MyProject;

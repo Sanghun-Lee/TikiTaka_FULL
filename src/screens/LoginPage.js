@@ -9,7 +9,7 @@ import Bottom from '../components/login/loginPage/Bottom';
 import StatusBar from '../components/common/StatusBar';
 
 export default class LoginPage extends Component {
-  render() {
+  render () {
     return (
       <View style={styles.root}>
         <StatusBar />
@@ -34,7 +34,7 @@ export default class LoginPage extends Component {
     );
   }
 }
-const styles = StyleSheet.create({
+const styles = StyleSheet.create ({
   root: {
     flex: 1,
     backgroundColor: 'white',

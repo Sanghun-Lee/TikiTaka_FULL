@@ -16,7 +16,7 @@ const freelancerList = [
     rating: 4,
     evaluation: 13,
     grade: 3,
-    imgSrc: require('../../assets/images/Freelancer/FreelancerThumbnail/FreelancerImage.png'),
+    imgSrc: require ('../../assets/images/Freelancer/FreelancerThumbnail/FreelancerImage.png'),
   },
   {
     major: '산업디자인',
@@ -24,7 +24,7 @@ const freelancerList = [
     rating: 4,
     evaluation: 13,
     grade: 3,
-    imgSrc: require('../../assets/images/Freelancer/FreelancerThumbnail/FreelancerImage.png'),
+    imgSrc: require ('../../assets/images/Freelancer/FreelancerThumbnail/FreelancerImage.png'),
   },
   {
     major: '산업디자인',
@@ -32,7 +32,7 @@ const freelancerList = [
     rating: 4,
     evaluation: 13,
     grade: 3,
-    imgSrc: require('../../assets/images/Freelancer/FreelancerThumbnail/FreelancerImage.png'),
+    imgSrc: require ('../../assets/images/Freelancer/FreelancerThumbnail/FreelancerImage.png'),
   },
   {
     major: '산업디자인',
@@ -40,7 +40,7 @@ const freelancerList = [
     rating: 4,
     evaluation: 13,
     grade: 3,
-    imgSrc: require('../../assets/images/Freelancer/FreelancerThumbnail/FreelancerImage.png'),
+    imgSrc: require ('../../assets/images/Freelancer/FreelancerThumbnail/FreelancerImage.png'),
   },
   {
     major: '산업디자인',
@@ -48,7 +48,7 @@ const freelancerList = [
     rating: 4,
     evaluation: 13,
     grade: 3,
-    imgSrc: require('../../assets/images/Freelancer/FreelancerThumbnail/FreelancerImage.png'),
+    imgSrc: require ('../../assets/images/Freelancer/FreelancerThumbnail/FreelancerImage.png'),
   },
   {
     major: '산업디자인',
@@ -56,7 +56,7 @@ const freelancerList = [
     rating: 4,
     evaluation: 13,
     grade: 3,
-    imgSrc: require('../../assets/images/Freelancer/FreelancerThumbnail/FreelancerImage.png'),
+    imgSrc: require ('../../assets/images/Freelancer/FreelancerThumbnail/FreelancerImage.png'),
   },
   {
     major: '산업디자인',
@@ -64,7 +64,7 @@ const freelancerList = [
     rating: 4,
     evaluation: 13,
     grade: 3,
-    imgSrc: require('../../assets/images/Freelancer/FreelancerThumbnail/FreelancerImage.png'),
+    imgSrc: require ('../../assets/images/Freelancer/FreelancerThumbnail/FreelancerImage.png'),
   },
   {
     major: '산업디자인',
@@ -72,13 +72,13 @@ const freelancerList = [
     rating: 4,
     evaluation: 13,
     grade: 3,
-    imgSrc: require('../../assets/images/Freelancer/FreelancerThumbnail/FreelancerImage.png'),
+    imgSrc: require ('../../assets/images/Freelancer/FreelancerThumbnail/FreelancerImage.png'),
   },
 ];
 
 // create a component
 class FreelancerList extends Component {
-  render() {
+  render () {
     return (
       <View style={styles.container}>
         <StatusBar />
@@ -86,11 +86,11 @@ class FreelancerList extends Component {
         <Subtitle subtitle="프리랜서" />
         <ActionButton
           buttonColor="rgba(231, 76, 60, 1)"
-          onPress={() => Alert.alert('Filterbutton Clicked')}
+          onPress={() => Alert.alert ('Filterbutton Clicked')}
           active={true}
         />
         <ScrollView>
-          {freelancerList.map((freelancerList, index) => {
+          {freelancerList.map ((freelancerList, index) => {
             return (
               <FreelancerThumbnail
                 major={freelancerList.major}
@@ -111,7 +111,7 @@ class FreelancerList extends Component {
 }
 
 // define your styles
-const styles = StyleSheet.create({
+const styles = StyleSheet.create ({
   container: {
     flex: 1,
   },

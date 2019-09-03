@@ -9,16 +9,17 @@ import ProjectList from './src/screens/ProjectList';
 import ProjectScreen from './src/screens/ProjectScreen';
 import FreelancerList from './src/screens/FreelancerList';
 import FreelancerScreen from './src/screens/FreelancerScreen';
+import FavoriteList from './src/screens/FavoriteList';
+import MyProject from './src/screens/MyProject';
 
 import ChattingList from './src/screens/not complete/ChattingList';
 import MyCircle from './src/screens/not complete/MyCircle';
-import MyProject from './src/screens/not complete/MyProject';
 import MyPage from './src/screens/not complete/MyPage';
 
 import React, {Component} from 'react';
 import {createStackNavigator, createAppContainer} from 'react-navigation';
 
-const AppNavigator = createStackNavigator(
+const AppNavigator = createStackNavigator (
   {
     LoginPage: {screen: LoginPage},
     PasswordFind: {screen: PasswordFind},
@@ -35,6 +36,7 @@ const AppNavigator = createStackNavigator(
     MyCircle: {screen: MyCircle},
     MyProject: {screen: MyProject},
     MyPage: {screen: MyPage},
+    FavoriteList: {screen: FavoriteList},
   },
   {
     initialRouteKey: 'LoginPage',
@@ -42,10 +44,10 @@ const AppNavigator = createStackNavigator(
   }
 );
 
-let Navigation = createAppContainer(AppNavigator);
+let Navigation = createAppContainer (AppNavigator);
 
 export default class App extends Component {
-  render() {
+  render () {
     return <Navigation />;
   }
 }

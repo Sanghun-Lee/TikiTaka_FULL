@@ -1,16 +1,11 @@
+//import liraries
 import React, {Component} from 'react';
-import {
-  StyleSheet,
-  Text,
-  View,
-  ScrollView,
-  TouchableOpacity,
-  Image,
-} from 'react-native';
+import {View, Text, StyleSheet, ScrollView} from 'react-native';
 
 import StatusBar from '../components/common/StatusBar';
-import Header from '../components/common/Header';
+import Header from '../components/FavoriteList/Header';
 import Subtitle from '../components/common/Subtitle';
+
 import ProjectThumbnail from '../components/project/ProjectThumbnail';
 import FreelancerThumbnail from '../components/freelancer/FreelancerThumbnail';
 
@@ -36,15 +31,15 @@ const freelancerList = [
   },
 ];
 
-export default class SearchResult extends Component {
+// create a component
+class FavoriteList extends Component {
   render () {
     return (
       <View style={styles.container}>
         <StatusBar />
-        <Header navigation={this.props.navigation} />
-
+        <Header navigation={this.props.navigation} title="좋아요 목록" />
         <ScrollView>
-          <Subtitle subtitle="검색 결과 - 프로젝트" />
+          <Subtitle subtitle="프로젝트 리스트" />
           {projectList.map ((projectList, index) => {
             return (
               <ProjectThumbnail
@@ -59,19 +54,7 @@ export default class SearchResult extends Component {
               />
             );
           })}
-          <View style={styles.tapMore}>
-            <TouchableOpacity
-              onPress={this._handlePressProjectMore}
-              style={{flex: 1, flexDirection: 'row', alignItems: 'center'}}
-            >
-              <Text style={styles.tapMoreText}>더 보기</Text>
-              <Image
-                source={require ('../../assets/images/Freelancer/FreelancerThumbnail/SearchMoreIcon.png')}
-                style={styles.tapMoreIcon}
-              />
-            </TouchableOpacity>
-          </View>
-          <Subtitle subtitle="검색결과 - 프리랜서" />
+          <Subtitle subtitle="프리랜서 리스트" />
           {freelancerList.map ((freelancerList, index) => {
             return (
               <FreelancerThumbnail
@@ -86,50 +69,18 @@ export default class SearchResult extends Component {
               />
             );
           })}
-          <View style={styles.tapMore}>
-            <TouchableOpacity
-              style={{flex: 1, flexDirection: 'row', alignItems: 'center'}}
-              onPress={this._handlePressFreelancerMore}
-            >
-              <Text style={styles.tapMoreText}>더 보기</Text>
-              <Image
-                source={require ('../../assets/images/Freelancer/FreelancerThumbnail/SearchMoreIcon.png')}
-                style={styles.tapMoreIcon}
-              />
-            </TouchableOpacity>
-          </View>
         </ScrollView>
-        <Text />
       </View>
     );
   }
-
-  _handlePressProjectMore = () => {
-    this.props.navigation.navigate ('ProjectList');
-  };
-  _handlePressFreelancerMore = () => {
-    this.props.navigation.navigate ('FreelancerList');
-  };
 }
 
+// define your styles
 const styles = StyleSheet.create ({
   container: {
     flex: 1,
   },
-  tapMore: {
-    height: 35,
-    alignItems: 'flex-end',
-  },
-  tapMoreText: {
-    textAlign: 'right',
-    textAlignVertical: 'center',
-    fontSize: 10,
-    marginRight: 8,
-  },
-  tapMoreIcon: {
-    marginLeft: 3,
-    width: 5.31,
-    height: 8.69,
-    marginRight: 10,
-  },
 });
+
+//make this component available to the app
+export default FavoriteList;

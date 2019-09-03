@@ -17,19 +17,19 @@ import Category from '../components/MainPage/Category';
 import TimeLine from '../components/MainPage/TimeLine';
 
 class MainPage extends Component {
-  constructor(props) {
-    super(props);
+  constructor (props) {
+    super (props);
     this.state = {
       open: false,
     };
   }
 
   toggleOpen = () => {
-    this.setState({open: !this.state.open});
+    this.setState ({open: !this.state.open});
   };
 
   _PressMyPage = () => {
-    this.props.navigation.navigate('MyPage');
+    this.props.navigation.navigate ('MyPage');
   };
 
   drawerContent = name => {
@@ -43,7 +43,16 @@ class MainPage extends Component {
         }}
       >
         <View style={{flex: 1, alignItems: 'flex-end'}}>
-          <TouchableOpacity onPress={this.toggleOpen} style={{marginRight: 20}}>
+          <TouchableOpacity
+            onPress={this.toggleOpen}
+            style={{
+              height: 40,
+              width: 40,
+              marginRight: 20,
+              justifyContent: 'center',
+              alignItems: 'center',
+            }}
+          >
             <Ionicons name="ios-arrow-back" size={32} color="white" />
           </TouchableOpacity>
         </View>
@@ -54,7 +63,7 @@ class MainPage extends Component {
           >
             <Image
               style={{height: 85, width: 85}}
-              source={require('../../assets/images/SubPage/SideProfile01.png')}
+              source={require ('../../assets/images/SubPage/SideProfile01.png')}
             />
             <Text style={{color: 'white', fontSize: 15, marginTop: 15}}>
               {name}
@@ -62,19 +71,21 @@ class MainPage extends Component {
           </TouchableOpacity>
         </View>
         <View style={{flex: 8}}>
-          {this._drawerSection('ios-text', '채팅방', this._PressChattingButton)}
-          {this._drawerSection(
+          {this._drawerSection ('ios-text', '채팅방', this._PressChattingButton)}
+          {this._drawerSection (
             'md-clipboard',
             '내 프로젝트',
             this._PressMyProjectButton
           )}
-          {this._drawerSection(
+          {this._drawerSection (
             'ios-people',
             '내 동아리',
             this._PressMyCircleButton
           )}
-          {this._drawerSection('md-heart', '좋아요 목록', () =>
-            alert('heart onPress')
+          {this._drawerSection (
+            'md-heart',
+            '좋아요 목록',
+            this._PressMyFavoriteButton
           )}
         </View>
         <View
@@ -144,26 +155,25 @@ class MainPage extends Component {
   };
 
   _PressChattingButton = () => {
-    this.props.navigation.navigate('ChattingList');
+    this.props.navigation.navigate ('ChattingList');
   };
   _PressMyProjectButton = () => {
-    this.props.navigation.navigate('MyProject');
+    this.props.navigation.navigate ('MyProject');
   };
   _PressMyCircleButton = () => {
-    this.props.navigation.navigate('MyCircle');
+    this.props.navigation.navigate ('MyCircle');
   };
-  // _PressMyFavoriteButton = () => {
-  //   this.props.navigation.navigate("");
-
-  // }
+  _PressMyFavoriteButton = () => {
+    this.props.navigation.navigate ('FavoriteList');
+  };
   _PressSettingButton = () => {
-    this.props.navigation.navigate('Setting');
+    this.props.navigation.navigate ('Setting');
   };
   _PressLogoutButton = () => {
-    this.props.navigation.navigate('LoginPage');
+    this.props.navigation.navigate ('LoginPage');
   };
 
-  render() {
+  render () {
     return (
       <View style={styles.container}>
         <StatusBar />
@@ -173,7 +183,7 @@ class MainPage extends Component {
             drawerPercentage={80}
             animationTime={250}
             opacity={1}
-            drawerContent={this.drawerContent('고민우')}
+            drawerContent={this.drawerContent ('고민우')}
           >
             <View style={styles.titleBar}>
               <TouchableOpacity style={styles.center} onPress={this.toggleOpen}>
@@ -206,13 +216,13 @@ class MainPage extends Component {
   }
 
   _PressSearchButton = () => {
-    this.props.navigation.navigate('Search');
+    this.props.navigation.navigate ('Search');
   };
 }
 
 export default MainPage;
 
-const styles = StyleSheet.create({
+const styles = StyleSheet.create ({
   container: {
     flex: 1,
   },

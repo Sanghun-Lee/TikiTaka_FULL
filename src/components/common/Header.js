@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import {Ionicons} from '@expo/vector-icons';
 
 export default class Header extends Component {
-  render() {
+  render () {
     return (
       <View style={styles.container}>
         <TouchableOpacity
@@ -25,19 +25,13 @@ export default class Header extends Component {
   }
 
   _PressBackButton = () => {
-    this.props.navigation.goBack();
+    this.props.navigation.goBack ();
   };
   _PressSearchButton = () => {
-    this.props.navigation.navigate('Search');
+    this.props.navigation.navigate ('Search');
   };
 }
-
-_handleSearchButton = () => {
-  this.props.navigation.navigate('Search');
-};
-_handlePressBackButton = () => {};
-
-const styles = StyleSheet.create({
+const styles = StyleSheet.create ({
   container: {
     backgroundColor: '#35CBEE',
     flexDirection: 'row',

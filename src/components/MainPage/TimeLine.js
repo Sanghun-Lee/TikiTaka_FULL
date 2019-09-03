@@ -8,7 +8,7 @@ class TimeLine extends Component {
   render () {
     return (
       <Card>
-        <CardItem button onPress={() => alert ('TimeLine onPress')}>
+        <CardItem button onPress={this._PressCard}>
           <Left>
             <Thumbnail
               source={require ('../../../assets/images/MainPage/TimeLine/daeguCircle01.png')}
@@ -19,13 +19,13 @@ class TimeLine extends Component {
             </Body>
           </Left>
         </CardItem>
-        <CardItem cardBody button onPress={() => alert ('card body onPress')}>
+        <CardItem cardBody button onPress={this._PressCard}>
           <Image
             source={require ('../../../assets/images/MainPage/TimeLine/DaeguUniver.png')}
             style={{height: 200, width: null, flex: 1}}
           />
         </CardItem>
-        <CardItem button onPress={() => alert ('card Bottom Text onPress')}>
+        <CardItem button onPress={this._PressCard}>
           <Text>
             이제 여기에 타임라인 안에 들어가는 내용이 들어오면 됩니다.
             제목이 필요하면 Text를 하나 더 만들어서 fontWeight만 900으로 만들어주면 금방 만들 수 있습니다.
@@ -34,6 +34,10 @@ class TimeLine extends Component {
       </Card>
     );
   }
+
+  _PressCard = () => {
+    this.props.navigation.navigate ('ProjectScreen');
+  };
 }
 
 //make this component available to the app

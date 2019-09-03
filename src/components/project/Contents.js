@@ -7,12 +7,15 @@ class Contents extends Component {
   render () {
     return (
       <View style={styles.container}>
-        <Text>학년 : 4학년</Text>
-        <Text>대학 : 영남대학교</Text>
-        <Text>소속 : 티키타카 동아리</Text>
-        <Text>전공 : 국어국문학과</Text>
-        <Text>부전공 : 없음</Text>
-        <Text>연락처 : 010-1234-5678</Text>
+        <Text>총 인원 : 6명</Text>
+        <Text>모집 인원 : 1명</Text>
+        <Text>금액 : 20000원</Text>
+        <Text>기간 : 19.06.27 ~ 19.08.12</Text>
+        <Text>연락처 : 010-5215-5484</Text>
+        <Text>
+          세부 정보 : 현재 팀원으로 영상 제작에서 필요한 사운드를 담당해주실
+          음악관련 전공자를 모집하고있습니다.
+        </Text>
       </View>
     );
   }

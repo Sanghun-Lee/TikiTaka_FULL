@@ -9,9 +9,12 @@ import Subtitle from '../components/common/Subtitle';
 import PictureAndGrade from '../components/freelancer/PictureAndGrade';
 import Contents from '../components/freelancer/Contents';
 
+import Button from '../components/common/projFree/Button';
+import Favorite from '../components/common/projFree/FavortieButton';
+
 // create a component
 class FreelancerScreen extends Component {
-  render() {
+  render () {
     return (
       <View style={styles.container}>
         <StatusBar />
@@ -23,12 +26,17 @@ class FreelancerScreen extends Component {
             <PictureAndGrade />
           </View>
           <Subtitle subtitle="" />
-          <View style={{height: 400}}>
+          <View>
             <Contents />
           </View>
           <Subtitle subtitle="" />
-          <View style={{height: 200}}>
-            <Text>수락 버튼과 즐겨찾기 버튼, 메시지 보내기 버튼이 있는 곳</Text>
+          <View style={{height: 100, flexDirection: 'row'}}>
+            <View style={[styles.center, {flex: 5}]}>
+              <Button text="메시지 보내기" onPress={() => alert ('Message Button')} />
+            </View>
+            <View style={[styles.center, {flex: 1}]}>
+              <Favorite />
+            </View>
           </View>
         </ScrollView>
       </View>
@@ -37,7 +45,7 @@ class FreelancerScreen extends Component {
 }
 
 // define your styles
-const styles = StyleSheet.create({
+const styles = StyleSheet.create ({
   container: {
     flex: 1,
   },
@@ -46,6 +54,10 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#2c3e50',
+  },
+  center: {
+    justifyContent: 'center',
+    alignItems: 'center',
   },
 });
 

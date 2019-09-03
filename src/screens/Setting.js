@@ -32,7 +32,7 @@ class Setting extends Component {
     return (
       <View style={styles.container}>
         <StatusBar />
-        <Header />
+        <Header navigation={this.props.navigation}/>
         <Subtitle subtitle="알림" />
         <SettingItem
           SettingContext="애플리케이션 광고 알림"
