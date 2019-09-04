@@ -18,6 +18,8 @@
     "react-native": "https://github.com/expo/react-native/archive/sdk-34.0.0.tar.gz",
     "react-native-action-button": "^2.8.5",
     "react-native-gesture-handler": "^1.4.1",
+    "react-native-modal": "^11.3.1",
+    "react-native-picker-modal-view": "^1.2.6",
     "react-native-side-drawer": "^1.1.11",
     "react-native-stars": "^1.1.5",
     "react-native-swiper-flatlist": "^2.0.2",

@@ -6,8 +6,7 @@ import StatusBar from '../components/common/StatusBar';
 import Header from '../components/common/Header';
 import Subtitle from '../components/common/Subtitle';
 import FreelancerThumbnail from '../components/freelancer/FreelancerThumbnail';
-
-import ActionButton from 'react-native-action-button';
+import FilterButton from '../components/common/BottomButton';
 
 const freelancerList = [
   {
@@ -84,11 +83,6 @@ class FreelancerList extends Component {
         <StatusBar />
         <Header navigation={this.props.navigation} />
         <Subtitle subtitle="프리랜서" />
-        <ActionButton
-          buttonColor="rgba(231, 76, 60, 1)"
-          onPress={() => Alert.alert ('Filterbutton Clicked')}
-          active={true}
-        />
         <ScrollView>
           {freelancerList.map ((freelancerList, index) => {
             return (
@@ -105,6 +99,11 @@ class FreelancerList extends Component {
             );
           })}
         </ScrollView>
+        <FilterButton
+          title="필터 적용"
+          IconName="ios-options"
+          onPress={() => alert ('button Pressed')}
+        />
       </View>
     );
   }

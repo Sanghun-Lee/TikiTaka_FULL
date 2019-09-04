@@ -8,7 +8,7 @@ import {
   Image,
 } from 'react-native';
 import MenuDrawer from 'react-native-side-drawer';
-import {Container, Content} from 'native-base';
+import {Content} from 'native-base';
 import {Ionicons} from '@expo/vector-icons';
 
 import StatusBar from '../components/common/StatusBar';

@@ -24,7 +24,6 @@ class Header extends Component {
         </View>
         <Text style={styles.headerText}>{this.props.title}</Text>
         <View style={{flex: 1}} />
-
       </View>
     );
   }

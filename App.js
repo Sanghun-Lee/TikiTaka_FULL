@@ -15,6 +15,7 @@ import MyProject from './src/screens/MyProject';
 import ChattingList from './src/screens/not complete/ChattingList';
 import MyCircle from './src/screens/not complete/MyCircle';
 import MyPage from './src/screens/not complete/MyPage';
+import CreateNewProject from './src/screens/not complete/CreateNewProject';
 
 import React, {Component} from 'react';
 import {createStackNavigator, createAppContainer} from 'react-navigation';
@@ -37,6 +38,7 @@ const AppNavigator = createStackNavigator (
     MyProject: {screen: MyProject},
     MyPage: {screen: MyPage},
     FavoriteList: {screen: FavoriteList},
+    CreateNewProject: {screen: CreateNewProject},
   },
   {
     initialRouteKey: 'LoginPage',

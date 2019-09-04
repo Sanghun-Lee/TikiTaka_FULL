@@ -12,9 +12,13 @@ export default class FreelancerThumbnail extends Component {
     grade: PropTypes.number.isRequired,
     imgSrc: PropTypes.number.isRequired,
   };
+  state = {
+    isFavorite: false,
+  };
 
   render () {
-    const {isFavorite} = false;
+    const {isFavorite} = this.state;
+
     return (
       <View style={styles.container}>
         <TouchableOpacity

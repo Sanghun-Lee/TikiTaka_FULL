@@ -12,9 +12,12 @@ export default class ProjectThumbnail extends Component {
     Recruitment: PropTypes.number.isRequired,
     major: PropTypes.string.isRequired,
   };
+  state = {
+    isFavorite: false,
+  };
 
   render () {
-    const {isFavorite} = false;
+    const {isFavorite} = this.state;
 
     return (
       <View style={styles.container}>

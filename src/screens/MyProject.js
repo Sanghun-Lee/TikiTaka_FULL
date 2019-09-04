@@ -6,6 +6,7 @@ import StatusBar from '../components/common/StatusBar';
 import Header from '../components/FavoriteList/Header';
 import Subtitle from '../components/common/Subtitle';
 import ProjectThumbnail from '../components/project/ProjectThumbnail';
+import NewProjectButton from '../components/MyProject/BottomButton';
 
 const projectList = [
   {
@@ -42,6 +43,11 @@ class MyProject extends Component {
             );
           })}
         </ScrollView>
+        <NewProjectButton
+          title="새 프로젝트 만들기"
+          IconName="ios-create"
+          onPress={() => alert ('새 프로젝트 만들기')}
+        />
       </View>
     );
   }

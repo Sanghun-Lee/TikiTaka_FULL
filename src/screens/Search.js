@@ -5,7 +5,7 @@ import {
   TouchableOpacity,
   View,
   TextInput,
-  Image,
+  Alert,
   AsyncStorage,
   ScrollView,
 } from 'react-native';
@@ -24,10 +24,10 @@ export default class Search2 extends Component {
   };
 
   componentDidMount = () => {
-    this._loadHistory();
+    this._loadHistory ();
   };
 
-  render() {
+  render () {
     const {searchValue, loadedSearchHistory, History} = this.state;
     // console.log (History);
     return (
@@ -56,68 +56,66 @@ export default class Search2 extends Component {
             <Ionicons name="ios-search" size={28} color="white" />
           </TouchableOpacity>
         </View>
-        {loadedSearchHistory ? (
-          <ScrollView>
-            <Subtitle subtitle="최근 검색 목록" />
-            {Object.values(History)
-              .reverse()
-              .map(history => (
-                <HistoryItem
-                  key={history.id}
-                  {...history}
-                  deleteSearchHistory={this._deleteHistory}
-                />
-              ))}
-          </ScrollView>
-        ) : (
-          <ScrollView>
-            <Subtitle subtitle="최근 검색 목록" />
-            <View style={{alignItems: 'center'}}>
-              <Text>최근 검색 목록이 없습니다.</Text>
-            </View>
-          </ScrollView>
-        )}
+        {loadedSearchHistory
+          ? <ScrollView>
+              <Subtitle subtitle="최근 검색 목록" />
+              {Object.values (History)
+                .reverse ()
+                .map (history => (
+                  <HistoryItem
+                    key={history.id}
+                    {...history}
+                    deleteSearchHistory={this._deleteHistory}
+                  />
+                ))}
+            </ScrollView>
+          : <ScrollView>
+              <Subtitle subtitle="최근 검색 목록" />
+              <View style={{alignItems: 'center'}}>
+                <Text>최근 검색 목록이 없습니다.</Text>
+              </View>
+            </ScrollView>}
       </View>
     );
   }
 
   _PressBackButton = () => {
-    this.props.navigation.goBack();
+    this.props.navigation.goBack ();
   };
 
   _controlSearchText = text => {
-    this.setState({searchValue: text});
+    this.setState ({searchValue: text});
   };
 
   _loadHistory = async () => {
     try {
-      const History = await AsyncStorage.getItem('History');
-      const parsedHistory = JSON.parse(History);
-      console.log(!parsedHistory);
-      if (Object.keys(parsedHistory).length) {
-        this.setState({loadedSearchHistory: true, History: parsedHistory});
+      const History = await AsyncStorage.getItem ('History');
+      const parsedHistory = JSON.parse (History);
+      console.log (!parsedHistory);
+      if (Object.keys (parsedHistory).length) {
+        this.setState ({loadedSearchHistory: true, History: parsedHistory});
       } else {
-        this.setState({History: parsedHistory});
+        this.setState ({History: parsedHistory});
       }
     } catch (err) {
-      console.log(err);
+      console.log (err);
     }
   };
 
   _PressSearchButton = () => {
-    console.log('검색버튼이 눌렸습니다.');
-    console.log('입력 값_ searchValue');
-    console.log(this.state.searchValue);
-    this.props.navigation.navigate('SearchResult');
+    console.log ('검색버튼이 눌렸습니다.');
+    console.log ('입력 값_ searchValue');
+    console.log (this.state.searchValue);
     const {searchValue} = this.state;
     if (searchValue !== '') {
-      this.setState(prevState => {
-        const ID = uuidv1();
+      this.props.navigation.navigate ('SearchResult');
+      this.setState (prevState => {
+        const ID = uuidv1 ();
         const newValueObject = {
           [ID]: {
             id: ID,
             text: searchValue,
-            createdAt: Date.now(),
+            createdAt: Date.now (),
           },
         };
         const newState = {
@@ -129,41 +127,45 @@ export default class Search2 extends Component {
           },
         };
         // this.setState({ loadedSearchHistory: true });
-        this._saveHistory(newState.History);
+        this._saveHistory (newState.History);
         return {...newState};
       });
+    } else {
+      {
+        Alert.alert ('입력값이 없습니다.', '검색어를 입력해 주세요');
+      }
     }
   };
 
   _PressSearchHistory = id => {
     this.searchValue = searchHistory[id].text;
-    this._deleteSearchHistory(id);
-    this._PressSearchButton();
+    this._deleteSearchHistory (id);
+    this._PressSearchButton ();
   };
 
   _deleteHistory = id => {
-    this.setState(prevState => {
+    this.setState (prevState => {
       const History = prevState.History;
       delete History[id];
       const newState = {
         ...prevState,
         ...History,
       };
-      this._saveHistory(newState.History);
+      this._saveHistory (newState.History);
       return {...newState};
     });
   };
 
   _saveHistory = newHistory => {
     // console.log (JSON.stringify(newHistory));
-    const saveHistory = AsyncStorage.setItem(
+    const saveHistory = AsyncStorage.setItem (
       'History',
-      JSON.stringify(newHistory)
+      JSON.stringify (newHistory)
     );
   };
 }
 
-const styles = StyleSheet.create({
+const styles = StyleSheet.create ({
   container: {
     flex: 1,
     flexDirection: 'column',

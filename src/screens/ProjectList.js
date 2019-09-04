@@ -6,9 +6,7 @@ import StatusBar from '../components/common/StatusBar';
 import Header from '../components/common/Header';
 import Subtitle from '../components/common/Subtitle';
 import ProjectThumbnail from '../components/project/ProjectThumbnail';
-
-import ActionButton from 'react-native-action-button';
-import {Ionicon} from 'react-native-vector-icons/Ionicons';
+import FilterButton from '../components/common/BottomButton';
 
 const projectList = [
   {
@@ -29,10 +27,6 @@ class ProjectList extends Component {
         <StatusBar />
         <Header navigation={this.props.navigation} />
         <Subtitle subtitle="프로젝트" />
-        <ActionButton
-          buttonColor="rgba(231, 76, 60, 1)"
-          onPress={() => Alert.alert ('Filterbutton Clicked')}
-        />
         <ScrollView>
           {projectList.map ((projectList, index) => {
             return (
@@ -49,6 +43,11 @@ class ProjectList extends Component {
             );
           })}
         </ScrollView>
+        <FilterButton
+          title="필터 적용"
+          IconName="ios-options"
+          onPress={() => alert ('button Pressed')}
+        />
       </View>
     );
   }
