@@ -11,7 +11,7 @@ import NewProjectButton from '../components/MyProject/BottomButton';
 const projectList = [
   {
     title: '프로젝트2',
-    imgSrc: require ('../../assets/images/Project/ProjectThumbnail/ProjectImage.png'),
+    imgSrc: require('../../assets/images/Project/ProjectThumbnail/ProjectImage.png'),
     price: 20000,
     endDueDate: '19.08.31',
     Recruitment: 4,
@@ -21,14 +21,14 @@ const projectList = [
 
 // create a component
 class MyProject extends Component {
-  render () {
+  render() {
     return (
       <View style={styles.container}>
         <StatusBar />
         <Header navigation={this.props.navigation} title="내 프로젝트" />
         <ScrollView>
           <Subtitle subtitle="내 프로젝트 목록" />
-          {projectList.map ((projectList, index) => {
+          {projectList.map((projectList, index) => {
             return (
               <ProjectThumbnail
                 imgSrc={projectList.imgSrc}
@@ -46,15 +46,19 @@ class MyProject extends Component {
         <NewProjectButton
           title="새 프로젝트 만들기"
           IconName="ios-create"
-          onPress={() => alert ('새 프로젝트 만들기')}
+          onPress={this._PressNewProject}
         />
       </View>
     );
   }
+
+  _PressNewProject = () => {
+    this.props.navigation.navigate('CreateNewProject');
+  };
 }
 
 // define your styles
-const styles = StyleSheet.create ({
+const styles = StyleSheet.create({
   container: {
     flex: 1,
   },

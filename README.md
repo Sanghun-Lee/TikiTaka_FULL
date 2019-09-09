@@ -2,12 +2,11 @@
 
 티키타카 최종본
 
-## 사용법
+## 사용된 모듈
 
 > - npm i
 > - npm install expo-constants
 > - npm install prop-types
-> - npm install react-native-side-drawer
 > - npm install uuid
 > - npm install react-native-swiper-flatlist
 > - npm install native-base

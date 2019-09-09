@@ -2,7 +2,6 @@
 import React, {Component} from 'react';
 import {View, StyleSheet, Image, TouchableOpacity, Alert} from 'react-native';
 import {Dimensions} from 'react-native';
-import PropTypes from 'prop-types';
 
 import SwiperFlatList from 'react-native-swiper-flatlist';
 

@@ -20,7 +20,7 @@ import CreateNewProject from './src/screens/not complete/CreateNewProject';
 import React, {Component} from 'react';
 import {createStackNavigator, createAppContainer} from 'react-navigation';
 
-const AppNavigator = createStackNavigator (
+const AppNavigator = createStackNavigator(
   {
     LoginPage: {screen: LoginPage},
     PasswordFind: {screen: PasswordFind},
@@ -46,17 +46,10 @@ const AppNavigator = createStackNavigator (
   }
 );
 
-let Navigation = createAppContainer (AppNavigator);
+let Navigation = createAppContainer(AppNavigator);
 
 export default class App extends Component {
-  render () {
+  render() {
     return <Navigation />;
   }
 }
-
-/*
-  ! 다운로드한 모듈
-  * npm install expo-constants -- 상태바 계산해주는 모듈
-  
-
-*/
