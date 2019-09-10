@@ -1,7 +1,8 @@
 //import liraries
 import React, {Component} from 'react';
-import {View, StyleSheet, Image, TouchableOpacity, Alert} from 'react-native';
+import {View, StyleSheet, Image, TouchableOpacity} from 'react-native';
 import {Dimensions} from 'react-native';
+import * as WebBrowser from 'expo-web-browser';
 
 import SwiperFlatList from 'react-native-swiper-flatlist';
 
@@ -9,21 +10,26 @@ import SwiperFlatList from 'react-native-swiper-flatlist';
 
 const child = [
   {
-    source: require ('../../../assets/images/MainPage/Advertise/Advertise1.png'),
-    onPress: () => Alert.alert ('Advertise1 Press'),
+    source: require('../../../assets/images/MainPage/Advertise/Advertise1.png'),
+    onPress: () => WebBrowser.openBrowserAsync('https://google.com'),
   },
   {
-    source: require ('../../../assets/images/MainPage/Advertise/Advertise2.png'),
-    onPress: () => Alert.alert ('Advertise2 Press'),
+    source: require('../../../assets/images/MainPage/Advertise/Advertise2.png'),
+    onPress: () => WebBrowser.openBrowserAsync('https://naver.com'),
   },
   {
-    source: require ('../../../assets/images/MainPage/Advertise/Advertise3.png'),
-    onPress: () => Alert.alert ('Advertise3 Press'),
+    source: require('../../../assets/images/MainPage/Advertise/Advertise3.png'),
+    onPress: () => WebBrowser.openBrowserAsync('https://daum.net'),
   },
 ];
-const screenWidth = Math.round (Dimensions.get ('window').width);
+const screenWidth = Math.round(Dimensions.get('window').width);
+
+function webView(webPage) {
+  WebBrowser.openBrowserAsync(webPage);
+}
+
 class Swiper extends Component {
-  render () {
+  render() {
     return (
       <View style={styles.container}>
         <SwiperFlatList
@@ -35,18 +41,17 @@ class Swiper extends Component {
           paginationStyleItem={{height: 10, width: 10}}
           paginationActiveColor="skyblue"
         >
-          {child.map ((child, index) => {
+          {child.map((child, index) => {
             return (
               <TouchableOpacity
                 style={styles.AdvertiseSize}
-                onPress={child.onPress}
                 key={index}
+                onPress={child.onPress}
               >
                 <Image source={child.source} style={styles.AdvertiseSize} />
               </TouchableOpacity>
             );
           })}
-
         </SwiperFlatList>
       </View>
     );
@@ -54,7 +59,7 @@ class Swiper extends Component {
 }
 
 // define your styles
-const styles = StyleSheet.create ({
+const styles = StyleSheet.create({
   container: {
     height: 170,
     backgroundColor: 'white',

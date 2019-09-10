@@ -7,10 +7,12 @@ import {
   TextInput,
   TouchableOpacity,
   Image,
+  KeyboardAvoidingView,
 } from 'react-native';
 import Animated, {Easing} from 'react-native-reanimated';
 import {TapGestureHandler, State} from 'react-native-gesture-handler';
 import StatusBar from '../components/common/StatusBar';
+import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 
 const {width, height} = Dimensions.get('window');
 
@@ -134,7 +136,11 @@ export default class LoginPage extends Component {
     const {id, password} = this.state;
     return (
       <View
-        style={{flex: 1, backgroundColor: 'white', justifyContent: 'flex-end'}}
+        style={{
+          flex: 1,
+          backgroundColor: 'white',
+          justifyContent: 'flex-end',
+        }}
       >
         <View style={{flex: 1}}>
           <Animated.View
@@ -247,7 +253,10 @@ export default class LoginPage extends Component {
               >
                 <Text style={{color: 'skyblue'}}>비밀번호 찾기</Text>
               </TouchableOpacity>
-              <TouchableOpacity style={{marginLeft: width - 200}}>
+              <TouchableOpacity
+                style={{marginLeft: width - 200}}
+                onPress={this._PressSignUpButton}
+              >
                 <Text style={{color: 'skyblue'}}>회원가입</Text>
               </TouchableOpacity>
             </View>
@@ -264,6 +273,9 @@ export default class LoginPage extends Component {
   };
   _handleLoginButtonOnPress = () => {
     this.props.navigation.navigate('MainPage');
+  };
+  _PressSignUpButton = () => {
+    this.props.navigation.navigate('SignUpPage');
   };
 }
 

@@ -5,38 +5,26 @@ import {Card, CardItem, Thumbnail, Body, Left} from 'native-base';
 
 // create a component
 class TimeLine extends Component {
-  render () {
+  render() {
     return (
       <Card>
         <CardItem button onPress={this._PressCard}>
           <Left>
             <Thumbnail
-              source={require ('../../../assets/images/MainPage/TimeLine/daeguCircle01.png')}
+              source={require('../../../assets/images/MainPage/TimeLine/daeguCircle01.png')}
             />
             <Body>
-              <Text>동아리든 프로젝트든 무슨 이름</Text>
+              <Text>어느 프로젝트에 인원이 추가되었습니다.</Text>
               <Text note>Jan 21, 2019</Text>
             </Body>
           </Left>
-        </CardItem>
-        <CardItem cardBody button onPress={this._PressCard}>
-          <Image
-            source={require ('../../../assets/images/MainPage/TimeLine/DaeguUniver.png')}
-            style={{height: 200, width: null, flex: 1}}
-          />
-        </CardItem>
-        <CardItem button onPress={this._PressCard}>
-          <Text>
-            이제 여기에 타임라인 안에 들어가는 내용이 들어오면 됩니다.
-            제목이 필요하면 Text를 하나 더 만들어서 fontWeight만 900으로 만들어주면 금방 만들 수 있습니다.
-          </Text>
         </CardItem>
       </Card>
     );
   }
 
   _PressCard = () => {
-    this.props.navigation.navigate ('ProjectScreen');
+    this.props.navigation.navigate('ProjectScreen');
   };
 }
 

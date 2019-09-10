@@ -13,7 +13,7 @@ import Button from '../components/common/projFree/Button';
 import Favorite from '../components/common/projFree/FavortieButton';
 // create a component
 class ProjectScreen extends Component {
-  render () {
+  render() {
     return (
       <View style={styles.container}>
         <StatusBar />
@@ -21,15 +21,18 @@ class ProjectScreen extends Component {
         <ScrollView>
           <ProjectPicture />
           <Subtitle subtitle="프로젝트 참여인원" />
-          <View>
+          <ScrollView horizontal={true}>
             <Party navigation={this.props.navigation} />
-          </View>
+          </ScrollView>
           <Subtitle subtitle="프로젝트 상세 정보" />
           <Contents />
           <Subtitle subtitle="" />
           <View style={{height: 100, flexDirection: 'row'}}>
             <View style={[styles.center, {flex: 5}]}>
-              <Button text="메시지 보내기" onPress={() => alert ('Message Button')} />
+              <Button
+                text="메시지 보내기"
+                onPress={() => alert('Message Button')}
+              />
             </View>
             <View style={[styles.center, {flex: 1}]}>
               <Favorite />
@@ -42,7 +45,7 @@ class ProjectScreen extends Component {
 }
 
 // define your styles
-const styles = StyleSheet.create ({
+const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
