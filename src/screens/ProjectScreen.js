@@ -7,10 +7,11 @@ import Header from '../components/common/Header';
 import ProjectPicture from '../components/common/SwiperFlatList';
 import Subtitle from '../components/common/Subtitle';
 
-import Party from '../components/project/Party';
-import Contents from '../components/project/Contents';
-import Button from '../components/common/projFree/Button';
-import Favorite from '../components/common/projFree/FavortieButton';
+import Party from '../components/Proj&Free/Project/Party';
+import Contents from '../components/Proj&Free/Project/Contents';
+
+import MessageButton from '../components/Proj&Free/common/MessageButton';
+import Favorite from '../components/Proj&Free/common/FavoriteButton';
 // create a component
 class ProjectScreen extends Component {
   render() {
@@ -29,7 +30,7 @@ class ProjectScreen extends Component {
           <Subtitle subtitle="" />
           <View style={{ height: 100, flexDirection: 'row' }}>
             <View style={[styles.center, { flex: 5 }]}>
-              <Button text="메시지 보내기" onPress={() => alert('Message Button')} />
+              <MessageButton text="메시지 보내기" onPress={() => alert('Message Button')} />
             </View>
             <View style={[styles.center, { flex: 1 }]}>
               <Favorite />

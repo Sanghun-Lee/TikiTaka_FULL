@@ -5,7 +5,7 @@ import { View, StyleSheet, ScrollView } from 'react-native';
 import StatusBar from '../components/common/StatusBar';
 import Header from '../components/common/Header';
 import Subtitle from '../components/common/Subtitle';
-import FreelancerThumbnail from '../components/freelancer/FreelancerThumbnail';
+import FreelancerThumbnail from '../components/Proj&Free/Freelancer/FreelancerThumbnail';
 import FilterButton from '../components/common/BottomButton';
 
 const freelancerList = [

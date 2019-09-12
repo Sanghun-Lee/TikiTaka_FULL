@@ -17,6 +17,7 @@ import MyCircle from './src/screens/not complete/MyCircle';
 import MyPage from './src/screens/not complete/MyPage';
 import CreateNewProject from './src/screens/not complete/CreateNewProject';
 import SignUpPage from './src/screens/SignUpPage';
+import WriteMyInfo from './src/screens/not complete/WriteMyInfo';
 
 import Temp from './temp';
 
@@ -43,6 +44,7 @@ const AppNavigator = createStackNavigator(
     FavoriteList: { screen: FavoriteList },
     CreateNewProject: { screen: CreateNewProject },
     SignUpPage: { screen: SignUpPage },
+    WriteMyInfo: { screen: WriteMyInfo },
   },
   {
     initialRouteKey: 'LoginPage',

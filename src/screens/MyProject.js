@@ -5,7 +5,7 @@ import { View, StyleSheet, ScrollView } from 'react-native';
 import StatusBar from '../components/common/StatusBar';
 import Header from '../components/common/Header';
 import Subtitle from '../components/common/Subtitle';
-import ProjectThumbnail from '../components/project/ProjectThumbnail';
+import ProjectThumbnail from '../components/Proj&Free/Project/ProjectThumbnail';
 import NewProjectButton from '../components/MyProject/BottomButton';
 
 const projectList = [

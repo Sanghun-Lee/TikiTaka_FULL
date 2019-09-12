@@ -1,10 +1,10 @@
 //import liraries
-import React, {Component} from 'react';
-import {View, Text, StyleSheet} from 'react-native';
+import React, { Component } from 'react';
+import { View, Text, StyleSheet } from 'react-native';
 
 // create a component
 class Contents extends Component {
-  render () {
+  render() {
     return (
       <View style={styles.container}>
         <Text>학년 : 4학년</Text>
@@ -19,7 +19,7 @@ class Contents extends Component {
 }
 
 // define your styles
-const styles = StyleSheet.create ({
+const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: 'white',

@@ -6,11 +6,12 @@ import StatusBar from '../components/common/StatusBar';
 import Header from '../components/common/Header';
 import FreelancerPicture from '../components/common/SwiperFlatList';
 import Subtitle from '../components/common/Subtitle';
-import PictureAndGrade from '../components/freelancer/PictureAndGrade';
-import Contents from '../components/freelancer/Contents';
 
-import Button from '../components/common/projFree/Button';
-import Favorite from '../components/common/projFree/FavortieButton';
+import PictureAndGrade from '../components/Proj&Free/Freelancer/PictureAndGrade';
+import Contents from '../components/Proj&Free/Freelancer/Contents';
+
+import Button from '../components/Proj&Free/common/MessageButton';
+import Favorite from '../components/Proj&Free/common/FavoriteButton';
 
 // create a component
 class FreelancerScreen extends Component {
@@ -23,7 +24,7 @@ class FreelancerScreen extends Component {
           <FreelancerPicture />
           <Subtitle subtitle="사용자 이름" />
           <View style={{ height: 130 }}>
-            <PictureAndGrade />
+            <PictureAndGrade ratingCount={32} rating={2.33} />
           </View>
           <Subtitle subtitle="" />
           <View>

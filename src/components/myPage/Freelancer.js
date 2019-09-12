@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { View, Text, StyleSheet, ScrollView } from 'react-native';
 
-import PictureAndGrade from '../freelancer/PictureAndGrade';
-import Contents from '../freelancer/Contents';
+import PictureAndGrade from '../Proj&Free/Freelancer/PictureAndGrade';
+import Contents from '../Proj&Free/Freelancer/Contents';
 import Subtitle from '../common/Subtitle';
 
 export default class Freelancer extends Component {
@@ -16,7 +16,7 @@ export default class Freelancer extends Component {
       <ScrollView style={styles.container}>
         <Subtitle subtitle="" />
         <View style={{ height: 130 }}>
-          <PictureAndGrade />
+          <PictureAndGrade ratingCount={22} rating={4.5} />
         </View>
         <Subtitle subtitle="" />
         <View>

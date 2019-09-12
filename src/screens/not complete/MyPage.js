@@ -23,7 +23,16 @@ class MyPage extends Component {
     return (
       <View style={styles.container}>
         <Statusbar />
-        <Header navigation={this.props.navigation} />
+        {this.state.freeFlag ? (
+          <Header
+            navigation={this.props.navigation}
+            Right="ios-create"
+            RightOnPress={this._PressMyInfo}
+          />
+        ) : (
+          <Header navigation={this.props.navigation} />
+        )}
+
         <SettingItem
           SettingContext="프리랜서 여부"
           toggleSwitchs={this.toggleFreeFlag}
@@ -37,6 +46,9 @@ class MyPage extends Component {
       </View>
     );
   }
+  _PressMyInfo = () => {
+    this.props.navigation.navigate('WriteMyInfo');
+  };
 }
 
 // define your styles

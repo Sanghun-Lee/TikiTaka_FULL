@@ -6,8 +6,8 @@ import StatusBar from '../components/common/StatusBar';
 import Header from '../components/common/Header';
 import Subtitle from '../components/common/Subtitle';
 
-import ProjectThumbnail from '../components/project/ProjectThumbnail';
-import FreelancerThumbnail from '../components/freelancer/FreelancerThumbnail';
+import ProjectThumbnail from '../components/Proj&Free/Project/ProjectThumbnail';
+import FreelancerThumbnail from '../components/Proj&Free/Freelancer/FreelancerThumbnail';
 
 const projectList = [
   {
