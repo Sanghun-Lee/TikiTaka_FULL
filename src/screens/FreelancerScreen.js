@@ -1,6 +1,6 @@
 //import liraries
-import React, {Component} from 'react';
-import {View, Text, StyleSheet, ScrollView} from 'react-native';
+import React, { Component } from 'react';
+import { View, StyleSheet, ScrollView } from 'react-native';
 
 import StatusBar from '../components/common/StatusBar';
 import Header from '../components/common/Header';
@@ -14,15 +14,15 @@ import Favorite from '../components/common/projFree/FavortieButton';
 
 // create a component
 class FreelancerScreen extends Component {
-  render () {
+  render() {
     return (
       <View style={styles.container}>
         <StatusBar />
-        <Header navigation={this.props.navigation} />
+        <Header navigation={this.props.navigation} centerText="상세 화면" />
         <ScrollView>
           <FreelancerPicture />
           <Subtitle subtitle="사용자 이름" />
-          <View style={{height: 130}}>
+          <View style={{ height: 130 }}>
             <PictureAndGrade />
           </View>
           <Subtitle subtitle="" />
@@ -30,11 +30,11 @@ class FreelancerScreen extends Component {
             <Contents />
           </View>
           <Subtitle subtitle="" />
-          <View style={{height: 100, flexDirection: 'row'}}>
-            <View style={[styles.center, {flex: 5}]}>
-              <Button text="메시지 보내기" onPress={() => alert ('Message Button')} />
+          <View style={{ height: 100, flexDirection: 'row' }}>
+            <View style={[styles.center, { flex: 5 }]}>
+              <Button text="메시지 보내기" onPress={() => alert('Message Button')} />
             </View>
-            <View style={[styles.center, {flex: 1}]}>
+            <View style={[styles.center, { flex: 1 }]}>
               <Favorite />
             </View>
           </View>
@@ -45,7 +45,7 @@ class FreelancerScreen extends Component {
 }
 
 // define your styles
-const styles = StyleSheet.create ({
+const styles = StyleSheet.create({
   container: {
     flex: 1,
   },

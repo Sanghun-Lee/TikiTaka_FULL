@@ -1,6 +1,6 @@
 //import liraries
-import React, {Component} from 'react';
-import {View, StyleSheet, ScrollView, Alert} from 'react-native';
+import React, { Component } from 'react';
+import { View, StyleSheet, ScrollView } from 'react-native';
 
 import StatusBar from '../components/common/StatusBar';
 import Header from '../components/common/Header';
@@ -15,76 +15,25 @@ const freelancerList = [
     rating: 4,
     evaluation: 13,
     grade: 3,
-    imgSrc: require ('../../assets/images/Freelancer/FreelancerThumbnail/FreelancerImage.png'),
-  },
-  {
-    major: '산업디자인',
-    collage: '영남대학교',
-    rating: 4,
-    evaluation: 13,
-    grade: 3,
-    imgSrc: require ('../../assets/images/Freelancer/FreelancerThumbnail/FreelancerImage.png'),
-  },
-  {
-    major: '산업디자인',
-    collage: '영남대학교',
-    rating: 4,
-    evaluation: 13,
-    grade: 3,
-    imgSrc: require ('../../assets/images/Freelancer/FreelancerThumbnail/FreelancerImage.png'),
-  },
-  {
-    major: '산업디자인',
-    collage: '영남대학교',
-    rating: 4,
-    evaluation: 13,
-    grade: 3,
-    imgSrc: require ('../../assets/images/Freelancer/FreelancerThumbnail/FreelancerImage.png'),
-  },
-  {
-    major: '산업디자인',
-    collage: '영남대학교',
-    rating: 4,
-    evaluation: 13,
-    grade: 3,
-    imgSrc: require ('../../assets/images/Freelancer/FreelancerThumbnail/FreelancerImage.png'),
-  },
-  {
-    major: '산업디자인',
-    collage: '영남대학교',
-    rating: 4,
-    evaluation: 13,
-    grade: 3,
-    imgSrc: require ('../../assets/images/Freelancer/FreelancerThumbnail/FreelancerImage.png'),
-  },
-  {
-    major: '산업디자인',
-    collage: '영남대학교',
-    rating: 4,
-    evaluation: 13,
-    grade: 3,
-    imgSrc: require ('../../assets/images/Freelancer/FreelancerThumbnail/FreelancerImage.png'),
-  },
-  {
-    major: '산업디자인',
-    collage: '영남대학교',
-    rating: 4,
-    evaluation: 13,
-    grade: 3,
-    imgSrc: require ('../../assets/images/Freelancer/FreelancerThumbnail/FreelancerImage.png'),
+    imgSrc: require('../../assets/images/Freelancer/FreelancerThumbnail/FreelancerImage.png'),
   },
 ];
 
 // create a component
 class FreelancerList extends Component {
-  render () {
+  render() {
     return (
       <View style={styles.container}>
         <StatusBar />
-        <Header navigation={this.props.navigation} />
+        <Header
+          navigation={this.props.navigation}
+          centerText="프리랜서 리스트"
+          Right="ios-search"
+          RightOnPress={this._PressSearchIcon}
+        />
         <Subtitle subtitle="프리랜서" />
         <ScrollView>
-          {freelancerList.map ((freelancerList, index) => {
+          {freelancerList.map((freelancerList, index) => {
             return (
               <FreelancerThumbnail
                 major={freelancerList.major}
@@ -102,15 +51,18 @@ class FreelancerList extends Component {
         <FilterButton
           title="필터 적용"
           IconName="ios-options"
-          onPress={() => alert ('button Pressed')}
+          onPress={() => alert('button Pressed')}
         />
       </View>
     );
   }
+  _PressSearchIcon = () => {
+    this.props.navigation.navigate('Search');
+  };
 }
 
 // define your styles
-const styles = StyleSheet.create ({
+const styles = StyleSheet.create({
   container: {
     flex: 1,
   },

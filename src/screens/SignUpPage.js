@@ -1,12 +1,11 @@
 //import liraries
-import React, {Component} from 'react';
-import {View, Text, StyleSheet, KeyboardAvoidingView} from 'react-native';
-import {Button} from 'native-base';
-
-import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
+import React, { Component } from 'react';
+import { View, StyleSheet, KeyboardAvoidingView } from 'react-native';
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import StatusBar from '../components/common/StatusBar';
-import Header from '../components/FavoriteList/Header';
+import Header from '../components/common/Header';
 import TextBox from '../components/login/SignUp/TextBox';
+import Bottom from '../components/login/SignUp/TwoButton';
 
 // create a component
 class SignUpPage extends Component {
@@ -14,38 +13,23 @@ class SignUpPage extends Component {
     return (
       <View style={styles.container}>
         <StatusBar />
-        <Header navigation={this.props.navigation} title="회원가입" />
-        <View style={{flex: 3, marginTop: 50, marginLeft: 15}}>
+        <Header navigation={this.props.navigation} centerText="회원가입" />
+        <View style={{ flex: 3, marginTop: 50, marginLeft: 15 }}>
           <TextBox text="이메일" button={true} />
           <TextBox text="비밀번호" password={true} />
           <TextBox text="비밀번호 확인" password={true} />
           <TextBox text="이름" />
           <TextBox text="닉네임" button={true} />
-          <View style={styles.buttonViewStyle}>
-            <Button
-              rounded
-              info
-              style={styles.buttonStyle}
-              onPress={() => alert('가입하기')}
-            >
-              <Text style={{color: 'white'}}>가입하기</Text>
-            </Button>
-            <Button
-              rounded
-              info
-              style={styles.buttonStyle}
-              onPress={this.cancel}
-            >
-              <Text style={{color: 'white'}}>취소</Text>
-            </Button>
-          </View>
+          <Bottom
+            Left="가입하기"
+            LeftOnPress={() => alert('가입하기')}
+            Right="취소"
+            RightOnPress={() => alert('취소')}
+          />
         </View>
       </View>
     );
   }
-  cancel = () => {
-    this.props.navigation.goBack();
-  };
 }
 
 // define your styles

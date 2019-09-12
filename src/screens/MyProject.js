@@ -1,9 +1,9 @@
 //import liraries
-import React, {Component} from 'react';
-import {View, StyleSheet, ScrollView} from 'react-native';
+import React, { Component } from 'react';
+import { View, StyleSheet, ScrollView } from 'react-native';
 
 import StatusBar from '../components/common/StatusBar';
-import Header from '../components/FavoriteList/Header';
+import Header from '../components/common/Header';
 import Subtitle from '../components/common/Subtitle';
 import ProjectThumbnail from '../components/project/ProjectThumbnail';
 import NewProjectButton from '../components/MyProject/BottomButton';
@@ -25,7 +25,7 @@ class MyProject extends Component {
     return (
       <View style={styles.container}>
         <StatusBar />
-        <Header navigation={this.props.navigation} title="내 프로젝트" />
+        <Header navigation={this.props.navigation} centerText="내 프로젝트" />
         <ScrollView>
           <Subtitle subtitle="내 프로젝트 목록" />
           {projectList.map((projectList, index) => {

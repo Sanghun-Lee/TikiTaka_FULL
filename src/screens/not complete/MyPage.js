@@ -1,29 +1,48 @@
 //import liraries
-import React, {Component} from 'react';
-import {View, Text, StyleSheet} from 'react-native';
+import React, { Component } from 'react';
+import { View, Text, StyleSheet } from 'react-native';
+
+import Statusbar from '../../components/common/StatusBar';
+import Header from '../../components/common/Header';
+import SettingItem from '../../components/Setting/SettingItem';
+
+import NotFreelancer from '../../components/myPage/NotFreelancer';
+import Freelancer from '../../components/myPage/Freelancer';
 
 // create a component
 class MyPage extends Component {
-  render () {
+  constructor() {
+    super();
+    this.state = { freeFlag: false };
+  }
+  toggleFreeFlag = value => {
+    this.setState({ freeFlag: value });
+  };
+
+  render() {
     return (
       <View style={styles.container}>
-        <Text>1. 배경사진 넣기</Text>
-        <Text>2. 사용자 사진 넣기</Text>
-        <Text>3. 평점은 그대로 넣기</Text>
-        <Text>4. 학년, 대학, 소속, 전공, 부전공, 복수전공, 연락처, 경력, 기타 입력하는 칸 만들기</Text>
-        <Text>수정완료 버튼 넣기</Text>
-        <Text>프로젝트 작성하기 버튼도 넣기</Text>
+        <Statusbar />
+        <Header navigation={this.props.navigation} />
+        <SettingItem
+          SettingContext="프리랜서 여부"
+          toggleSwitchs={this.toggleFreeFlag}
+          switchValues={this.state.freeFlag}
+        />
+        <Text>
+          사진, 이름, 학년, 한 줄 소개, 전공 카테고리, 자격증, career, education, 완료한 프로젝트
+          리스트
+        </Text>
+        {this.state.freeFlag ? <Freelancer /> : <NotFreelancer />}
       </View>
     );
   }
 }
 
 // define your styles
-const styles = StyleSheet.create ({
+const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
   },
 });
 

@@ -1,6 +1,6 @@
 //import liraries
-import React, {Component} from 'react';
-import {View, Text, StyleSheet, ScrollView} from 'react-native';
+import React, { Component } from 'react';
+import { View, Text, StyleSheet, ScrollView } from 'react-native';
 
 import StatusBar from '../components/common/StatusBar';
 import Header from '../components/common/Header';
@@ -17,7 +17,7 @@ class ProjectScreen extends Component {
     return (
       <View style={styles.container}>
         <StatusBar />
-        <Header navigation={this.props.navigation} />
+        <Header navigation={this.props.navigation} centerText="프로젝트 상세화면" />
         <ScrollView>
           <ProjectPicture />
           <Subtitle subtitle="프로젝트 참여인원" />
@@ -27,14 +27,11 @@ class ProjectScreen extends Component {
           <Subtitle subtitle="프로젝트 상세 정보" />
           <Contents />
           <Subtitle subtitle="" />
-          <View style={{height: 100, flexDirection: 'row'}}>
-            <View style={[styles.center, {flex: 5}]}>
-              <Button
-                text="메시지 보내기"
-                onPress={() => alert('Message Button')}
-              />
+          <View style={{ height: 100, flexDirection: 'row' }}>
+            <View style={[styles.center, { flex: 5 }]}>
+              <Button text="메시지 보내기" onPress={() => alert('Message Button')} />
             </View>
-            <View style={[styles.center, {flex: 1}]}>
+            <View style={[styles.center, { flex: 1 }]}>
               <Favorite />
             </View>
           </View>

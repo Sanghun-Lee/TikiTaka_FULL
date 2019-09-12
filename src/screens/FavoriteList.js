@@ -1,9 +1,9 @@
 //import liraries
-import React, {Component} from 'react';
-import {View, Text, StyleSheet, ScrollView} from 'react-native';
+import React, { Component } from 'react';
+import { View, Text, StyleSheet, ScrollView } from 'react-native';
 
 import StatusBar from '../components/common/StatusBar';
-import Header from '../components/FavoriteList/Header';
+import Header from '../components/common/Header';
 import Subtitle from '../components/common/Subtitle';
 
 import ProjectThumbnail from '../components/project/ProjectThumbnail';
@@ -12,7 +12,7 @@ import FreelancerThumbnail from '../components/freelancer/FreelancerThumbnail';
 const projectList = [
   {
     title: '프로젝트2',
-    imgSrc: require ('../../assets/images/Project/ProjectThumbnail/ProjectImage.png'),
+    imgSrc: require('../../assets/images/Project/ProjectThumbnail/ProjectImage.png'),
     price: 20000,
     endDueDate: '19.08.31',
     Recruitment: 4,
@@ -27,20 +27,20 @@ const freelancerList = [
     rating: 4,
     evaluation: 13,
     grade: 3,
-    imgSrc: require ('../../assets/images/Freelancer/FreelancerThumbnail/FreelancerImage.png'),
+    imgSrc: require('../../assets/images/Freelancer/FreelancerThumbnail/FreelancerImage.png'),
   },
 ];
 
 // create a component
 class FavoriteList extends Component {
-  render () {
+  render() {
     return (
       <View style={styles.container}>
         <StatusBar />
-        <Header navigation={this.props.navigation} title="좋아요 목록" />
+        <Header navigation={this.props.navigation} centerText="좋아요 목록" />
         <ScrollView>
           <Subtitle subtitle="프로젝트 리스트" />
-          {projectList.map ((projectList, index) => {
+          {projectList.map((projectList, index) => {
             return (
               <ProjectThumbnail
                 imgSrc={projectList.imgSrc}
@@ -55,7 +55,7 @@ class FavoriteList extends Component {
             );
           })}
           <Subtitle subtitle="프리랜서 리스트" />
-          {freelancerList.map ((freelancerList, index) => {
+          {freelancerList.map((freelancerList, index) => {
             return (
               <FreelancerThumbnail
                 major={freelancerList.major}
@@ -76,7 +76,7 @@ class FavoriteList extends Component {
 }
 
 // define your styles
-const styles = StyleSheet.create ({
+const styles = StyleSheet.create({
   container: {
     flex: 1,
   },

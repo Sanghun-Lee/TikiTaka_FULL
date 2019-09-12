@@ -1,81 +1,49 @@
 //import liraries
-import React, {Component} from 'react';
-import {View, Text, StyleSheet, TouchableOpacity, Image} from 'react-native';
-import {Ionicons} from '@expo/vector-icons';
+import React, { Component } from 'react';
+import { View, Text, StyleSheet, TouchableOpacity, Image } from 'react-native';
+import { Ionicons } from '@expo/vector-icons';
+
+import DrawerSection from './DrawerSection';
 // create a component
 class DrawerPage extends Component {
   render() {
     return (
-      <View
-        style={{
-          flex: 1,
-          flexDirection: 'column',
-          backgroundColor: '#38C8EC',
-          padding: 10,
-        }}
-      >
-        <View style={{flex: 5}}>
-          <TouchableOpacity
-            style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}
-            onPress={this._PressMyPage}
-          >
+      <View style={styles.container}>
+        <View style={{ flex: 5 }}>
+          <TouchableOpacity style={styles.center} onPress={this._PressMyPage}>
             <Image
-              style={{height: 85, width: 85}}
+              style={{ height: 85, width: 85 }}
               source={require('../../../assets/images/SubPage/SideProfile01.png')}
             />
-            <Text style={{color: 'white', fontSize: 15, marginTop: 15}}>
-              고민우
-            </Text>
+            <Text style={{ color: 'white', fontSize: 15, marginTop: 15 }}>고민우</Text>
           </TouchableOpacity>
         </View>
-        <View style={{flex: 8}}>
-          {this._drawerSection('ios-text', '채팅방', this._PressChattingButton)}
-          {this._drawerSection(
-            'md-clipboard',
-            '내 프로젝트',
-            this._PressMyProjectButton
-          )}
-          {this._drawerSection(
-            'ios-people',
-            '내 동아리',
-            this._PressMyCircleButton
-          )}
-          {this._drawerSection(
-            'md-heart',
-            '좋아요 목록',
-            this._PressMyFavoriteButton
-          )}
+        <View style={{ flex: 8 }}>
+          <DrawerSection iconName="ios-text" text="채팅방" onPress={this._PressChattingButton} />
+          <DrawerSection
+            iconName="md-clipboard"
+            text="내 프로젝트"
+            onPress={this._PressMyProjectButton}
+          />
+          <DrawerSection
+            iconName="ios-people"
+            text="내 동아리"
+            onPress={this._PressMyCircleButton}
+          />
+          <DrawerSection
+            iconName="md-heart"
+            text="좋아요 목록"
+            onPress={this._PressMyFavoriteButton}
+          />
         </View>
-        <View
-          style={{
-            flex: 2,
-            flexDirection: 'row',
-            borderTopWidth: StyleSheet.hairlineWidth,
-            borderTopColor: 'white',
-          }}
-        >
-          <View
-            style={{
-              flex: 1,
-              alignItems: 'flex-start',
-              justifyContent: 'center',
-            }}
-          >
-            <TouchableOpacity
-              style={{marginLeft: 15}}
-              onPress={this._PressSettingButton}
-            >
+        <View style={styles.bottom}>
+          <View style={styles.settingView}>
+            <TouchableOpacity style={{ marginLeft: 15 }} onPress={this._PressSettingButton}>
               <Ionicons name="md-settings" size={32} color="#D2F4FF" />
             </TouchableOpacity>
           </View>
-
-          <View
-            style={{flex: 1, alignItems: 'flex-end', justifyContent: 'center'}}
-          >
-            <TouchableOpacity
-              style={{marginRight: 15}}
-              onPress={this._PressLogoutButton}
-            >
+          <View style={styles.logoutView}>
+            <TouchableOpacity style={{ marginRight: 15 }} onPress={this._PressLogoutButton}>
               <Ionicons name="ios-log-out" size={32} color="#D2F4FF" />
             </TouchableOpacity>
           </View>
@@ -84,33 +52,6 @@ class DrawerPage extends Component {
     );
   }
 
-  _drawerSection = (name, text, onPress) => {
-    return (
-      <TouchableOpacity
-        style={{
-          flex: 1,
-          flexDirection: 'row',
-          borderTopWidth: 0.7,
-          borderTopColor: 'white',
-        }}
-        onPress={onPress}
-      >
-        <View
-          style={{
-            flex: 2,
-            flexDirection: 'column',
-            alignItems: 'center',
-            justifyContent: 'center',
-          }}
-        >
-          <Ionicons name={name} size={44} color="#D2F4FF" />
-        </View>
-        <View style={{flex: 6, justifyContent: 'center', marginLeft: 15}}>
-          <Text style={{color: 'white', fontSize: 15}}>{text}</Text>
-        </View>
-      </TouchableOpacity>
-    );
-  };
   _PressMyPage = () => {
     this.props.navigation.navigate('MyPage');
   };
@@ -138,9 +79,30 @@ class DrawerPage extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    flexDirection: 'column',
+    backgroundColor: '#38C8EC',
+    padding: 10,
+  },
+  center: {
+    flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#2c3e50',
+  },
+  bottom: {
+    flex: 2,
+    flexDirection: 'row',
+    borderTopWidth: StyleSheet.hairlineWidth,
+    borderTopColor: 'white',
+  },
+  settingView: {
+    flex: 1,
+    alignItems: 'flex-start',
+    justifyContent: 'center',
+  },
+  logoutView: {
+    flex: 1,
+    alignItems: 'flex-end',
+    justifyContent: 'center',
   },
 });
 

@@ -1,10 +1,10 @@
-import React, { Component } from "react";
-import { View, Text, StyleSheet } from "react-native";
+import React, { Component } from 'react';
+import { View, Text, StyleSheet } from 'react-native';
 
-import StatusBar from "../components/common/StatusBar";
-import Header from "../components/common/Header";
-import Subtitle from "../components/common/Subtitle";
-import SettingItem from "../components/Setting/SettingItem";
+import StatusBar from '../components/common/StatusBar';
+import Header from '../components/common/Header';
+import Subtitle from '../components/common/Subtitle';
+import SettingItem from '../components/Setting/SettingItem';
 
 class Setting extends Component {
   constructor() {
@@ -13,7 +13,7 @@ class Setting extends Component {
       switch1Value: false,
       switch2Value: true,
       switch3Value: false,
-      switch4Value: true
+      switch4Value: true,
     };
   }
   toggleSwitch1 = value => {
@@ -32,7 +32,7 @@ class Setting extends Component {
     return (
       <View style={styles.container}>
         <StatusBar />
-        <Header navigation={this.props.navigation}/>
+        <Header centerText="설정" navigation={this.props.navigation} />
         <Subtitle subtitle="알림" />
         <SettingItem
           SettingContext="애플리케이션 광고 알림"
@@ -64,6 +64,6 @@ export default Setting;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    flexDirection: "column"
-  }
+    flexDirection: 'column',
+  },
 });
