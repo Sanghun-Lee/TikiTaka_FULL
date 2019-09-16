@@ -70,7 +70,10 @@ export default class LoginPage extends Component {
       {
         nativeEvent: ({ state }) =>
           block([
-            cond(eq(state, State.END), set(this.buttonOpacity, runTiming(new Clock(), 1, 0))),
+            cond(
+              eq(state, State.END),
+              set(this.buttonOpacity, runTiming(new Clock(), 1, 0)),
+            ),
           ]),
       },
     ]);
@@ -79,7 +82,10 @@ export default class LoginPage extends Component {
       {
         nativeEvent: ({ state }) =>
           block([
-            cond(eq(state, State.END), set(this.buttonOpacity, runTiming(new Clock(), 0, 1))),
+            cond(
+              eq(state, State.END),
+              set(this.buttonOpacity, runTiming(new Clock(), 0, 1)),
+            ),
           ]),
       },
     ]);
@@ -178,7 +184,9 @@ export default class LoginPage extends Component {
                 transform: [{ translateY: this.buttonY }],
               }}
             >
-              <Text style={{ fontSize: 20, color: 'black' }}>Naver로 시작하기</Text>
+              <Text style={{ fontSize: 20, color: 'black' }}>
+                Naver로 시작하기
+              </Text>
             </Animated.View>
           </TouchableOpacity>
           <TouchableOpacity onPress={this._handleLoginButtonOnPress}>
@@ -190,7 +198,9 @@ export default class LoginPage extends Component {
                 transform: [{ translateY: this.buttonY }],
               }}
             >
-              <Text style={{ fontSize: 20, color: 'black' }}>Kakao로 시작하기</Text>
+              <Text style={{ fontSize: 20, color: 'black' }}>
+                Kakao로 시작하기
+              </Text>
             </Animated.View>
           </TouchableOpacity>
           <Animated.View
@@ -232,7 +242,9 @@ export default class LoginPage extends Component {
             />
             <TouchableOpacity onPress={() => alert(this.state.id)}>
               <Animated.View style={styles.button}>
-                <Text style={{ fontSize: 20, fontWeight: 'bold' }}>SIGN IN</Text>
+                <Text style={{ fontSize: 20, fontWeight: 'bold' }}>
+                  SIGN IN
+                </Text>
               </Animated.View>
             </TouchableOpacity>
             <View style={{ flexDirection: 'row', width: width }}>
@@ -316,17 +328,13 @@ const styles = StyleSheet.create({
 });
 
 /*
-
 import React, {Component} from 'react';
 import {View, StyleSheet, KeyboardAvoidingView} from 'react-native';
-
 import Logo from '../components/login/common/Logo';
 import APIButtonList from '../components/login/loginPage/APIButtonList';
 import LoginForm from '../components/login/loginPage/LoginForm';
 import Bottom from '../components/login/loginPage/Bottom';
-
 import StatusBar from '../components/common/StatusBar';
-
 export default class LoginPage extends Component {
   render() {
     return (
@@ -365,6 +373,4 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
   },
 });
-
-
 */

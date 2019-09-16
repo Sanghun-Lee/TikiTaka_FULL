@@ -1,5 +1,5 @@
 //import liraries
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import {
   View,
   Text,
@@ -9,7 +9,7 @@ import {
   Image,
 } from 'react-native';
 
-import {Ionicons} from '@expo/vector-icons';
+import { Ionicons } from '@expo/vector-icons';
 
 // create a component
 class Category extends Component {
@@ -26,7 +26,7 @@ class Category extends Component {
           {this._CategoryIcon(
             'ios-musical-notes',
             this._CategoryOnPress,
-            '음악'
+            '음악',
           )}
           {this._CategoryIcon('ios-cog', this._CategoryOnPress, '공학')}
           {this._CategoryIcon('ios-book', this._CategoryOnPress, '스터디')}
@@ -38,17 +38,17 @@ class Category extends Component {
 
   _CategoryImage(source, onPress, text) {
     return (
-      <TouchableOpacity onPress={onPress} style={{width: 44, height: 57}}>
-        <Image source={source} style={{width: 44, height: 44}} />
-        <Text style={{textAlign: 'center'}}>{text}</Text>
+      <TouchableOpacity onPress={onPress} style={{ width: 44, height: 57 }}>
+        <Image source={source} style={{ width: 44, height: 44 }} />
+        <Text style={{ textAlign: 'center' }}>{text}</Text>
       </TouchableOpacity>
     );
   }
   _CategoryIcon(name, onPress, text) {
     return (
-      <TouchableOpacity onPress={onPress} style={{witdh: 44, height: 57}}>
+      <TouchableOpacity onPress={onPress} style={{ witdh: 44, height: 57 }}>
         <Ionicons name={name} size={44} color="#38C8EC" />
-        <Text style={{textAlign: 'center'}}>{text}</Text>
+        <Text style={{ textAlign: 'center' }}>{text}</Text>
       </TouchableOpacity>
     );
   }

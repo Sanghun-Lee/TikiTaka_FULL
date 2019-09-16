@@ -2,10 +2,14 @@
 import React, { Component } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, Image } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
+import PropTypes from 'prop-types';
 
 import DrawerSection from './DrawerSection';
 // create a component
 class DrawerPage extends Component {
+  static propTypes = {
+    name: PropTypes.string.isRequired,
+  };
   render() {
     return (
       <View style={styles.container}>
@@ -13,13 +17,17 @@ class DrawerPage extends Component {
           <TouchableOpacity style={styles.center} onPress={this._PressMyPage}>
             <Image
               style={{ height: 85, width: 85 }}
-              source={require('../../../assets/images/SubPage/SideProfile01.png')}
+              source={require('../../../assets/images/Rayon.png')}
             />
-            <Text style={{ color: 'white', fontSize: 15, marginTop: 15 }}>고민우</Text>
+            <Text style={styles.nameText}>{this.props.name}</Text>
           </TouchableOpacity>
         </View>
         <View style={{ flex: 8 }}>
-          <DrawerSection iconName="ios-text" text="채팅방" onPress={this._PressChattingButton} />
+          <DrawerSection
+            iconName="ios-text"
+            text="채팅방"
+            onPress={this._PressChattingButton}
+          />
           <DrawerSection
             iconName="md-clipboard"
             text="내 프로젝트"
@@ -38,12 +46,18 @@ class DrawerPage extends Component {
         </View>
         <View style={styles.bottom}>
           <View style={styles.settingView}>
-            <TouchableOpacity style={{ marginLeft: 15 }} onPress={this._PressSettingButton}>
+            <TouchableOpacity
+              style={{ marginLeft: 15 }}
+              onPress={this._PressSettingButton}
+            >
               <Ionicons name="md-settings" size={32} color="#D2F4FF" />
             </TouchableOpacity>
           </View>
           <View style={styles.logoutView}>
-            <TouchableOpacity style={{ marginRight: 15 }} onPress={this._PressLogoutButton}>
+            <TouchableOpacity
+              style={{ marginRight: 15 }}
+              onPress={this._PressLogoutButton}
+            >
               <Ionicons name="ios-log-out" size={32} color="#D2F4FF" />
             </TouchableOpacity>
           </View>
@@ -87,6 +101,11 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+  },
+  nameText: {
+    color: 'white',
+    fontSize: 15,
+    marginTop: 15,
   },
   bottom: {
     flex: 2,

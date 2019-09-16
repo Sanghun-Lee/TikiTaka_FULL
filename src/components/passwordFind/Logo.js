@@ -1,12 +1,12 @@
-import React, {Component} from 'react';
-import {View, Text, Image, StyleSheet} from 'react-native';
+import React, { Component } from 'react';
+import { View, Text, Image, StyleSheet } from 'react-native';
 
 export default class Logo extends Component {
   render() {
     return (
       <View style={styles.container}>
         <Image
-          source={require('../../../../assets/images/login/common/tikitakaLogo.png')}
+          source={require('../../../assets/images/login/common/tikitakaLogo.png')}
           style={styles.LogoImage}
         />
         <Text style={styles.sloganText}>LIKE A PING - PONG TABLE</Text>

@@ -6,11 +6,9 @@ import PropTypes from 'prop-types';
 export default class FreelancerThumbnail extends Component {
   static propTypes = {
     major: PropTypes.string.isRequired,
-    collage: PropTypes.string.isRequired,
-    rating: PropTypes.number.isRequired,
-    evaluation: PropTypes.number.isRequired,
+    organization: PropTypes.string.isRequired,
     grade: PropTypes.number.isRequired,
-    imgSrc: PropTypes.number.isRequired,
+    intro: PropTypes.string.isRequired,
   };
   state = {
     isFavorite: false,
@@ -23,54 +21,41 @@ export default class FreelancerThumbnail extends Component {
       <View style={styles.container}>
         <TouchableOpacity
           style={[styles.container, { flex: 8 }]}
-          onPress={() => {
-            this.props.navigation.navigate('FreelancerScreen');
-          }}
+          onPress={this._pressFreelancer}
         >
           <View style={styles.ImageView}>
-            <Image source={this.props.imgSrc} style={styles.ImageStyle} />
+            <Image
+              source={require('../../../../assets/images/Rayon.png')}
+              style={styles.ImageStyle}
+            />
           </View>
           <View style={{ flex: 2, flexDirection: 'column' }}>
             <View style={{ flex: 2, justifyContent: 'center' }}>
-              <Text style={{ fontSize: 20, fontWeight: 'bold' }}>{this.props.major}</Text>
+              <Text style={{ fontSize: 20, fontWeight: 'bold' }}>
+                {this.props.major}
+              </Text>
             </View>
 
-            <View
-              style={{
-                flex: 3,
-                justifyContent: 'center',
-                flexDirection: 'row',
-              }}
-            >
-              <View style={{ flex: 1, marginTop: 10 }}>
-                <View
-                  style={{
-                    flexDirection: 'row',
-                    alignItems: 'center',
-                  }}
-                >
-                  <Image
-                    source={require('../../../../assets/images/Freelancer/FreelancerThumbnail/star.png')}
-                    style={{ width: 8.53, height: 8.11 }}
-                  />
-                  <Text style={{ fontWeight: '100', fontSize: 10, marginLeft: 5 }}>
-                    {this.props.rating}
-                  </Text>
-                </View>
-
-                <Text style={{ fontWeight: '100', fontSize: 10, marginTop: 5 }}>
-                  {this.props.evaluation}명의 평가
+            <View style={{ flex: 3 }}>
+              <View style={{ flex: 1, flexDirection: 'row' }}>
+                <Text style={{ fontSize: 12 }}>
+                  대학 : {this.props.organization}
+                </Text>
+                <Text style={{ fontSize: 12, marginLeft: 20 }}>
+                  학년 : {this.props.grade}
                 </Text>
               </View>
-              <View style={{ flex: 1, justifyContent: 'center' }}>
-                <Text style={{ fontSize: 12 }}>대학 : {this.props.collage}</Text>
-                <Text style={{ fontSize: 12 }}>학년 : {this.props.grade}</Text>
+              <View style={{ flex: 1 }}>
+                <Text numberOfLines={1}>{this.props.intro}</Text>
               </View>
             </View>
           </View>
         </TouchableOpacity>
         <View style={styles.favoriteView}>
-          <TouchableOpacity style={styles.favoriteOpacity} onPress={this._handlePressFavorite}>
+          <TouchableOpacity
+            style={styles.favoriteOpacity}
+            onPress={this._handlePressFavorite}
+          >
             {isFavorite ? (
               <Image
                 source={require('../../../../assets/images/Freelancer/FreelancerThumbnail/LikeEnable.png')}
@@ -88,8 +73,8 @@ export default class FreelancerThumbnail extends Component {
     );
   }
 
-  _handlePressProject = () => {
-    this.props.navigation.navigate('ProjectScreen');
+  _pressFreelancer = () => {
+    this.props.navigation.navigate('FreelancerScreen');
   };
   _handlePressFavorite = () => {
     this.setState(prevState => {

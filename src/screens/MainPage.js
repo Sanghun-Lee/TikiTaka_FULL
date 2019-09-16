@@ -4,7 +4,7 @@ import { Content, Drawer } from 'native-base';
 
 import StatusBar from '../components/common/StatusBar';
 import Header from '../components/common/Header';
-import Advertise from '../components/common/SwiperFlatList';
+import Advertise from '../components/MainPage/Advertise';
 import Category from '../components/MainPage/Category';
 import TimeLine from '../components/MainPage/TimeLine';
 import DrawerPage from '../components/MainPage/DrawerPage';
@@ -37,6 +37,9 @@ const TimeLineContents = [
 ];
 
 class MainPage extends Component {
+  state = {
+    name: '훈',
+  };
   closeDrawer = () => {
     this.drawer._root.close();
   };
@@ -52,7 +55,12 @@ class MainPage extends Component {
             ref={ref => {
               this.drawer = ref;
             }}
-            content={<DrawerPage navigation={this.props.navigation} />}
+            content={
+              <DrawerPage
+                navigation={this.props.navigation}
+                name={this.state.name}
+              />
+            }
             onClose={() => this.closeDrawer()}
           >
             <Header

@@ -4,8 +4,8 @@ import { View, StyleSheet, KeyboardAvoidingView } from 'react-native';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import StatusBar from '../components/common/StatusBar';
 import Header from '../components/common/Header';
-import TextBox from '../components/login/SignUp/TextBox';
-import Bottom from '../components/login/SignUp/TwoButton';
+import TextBox from '../components/inputForm/TextBox';
+import Bottom from '../components/inputForm/TwoButton';
 
 // create a component
 class SignUpPage extends Component {
@@ -13,23 +13,36 @@ class SignUpPage extends Component {
     return (
       <View style={styles.container}>
         <StatusBar />
-        <Header navigation={this.props.navigation} centerText="회원가입" />
-        <View style={{ flex: 3, marginTop: 50, marginLeft: 15 }}>
-          <TextBox text="이메일" button={true} />
-          <TextBox text="비밀번호" password={true} />
-          <TextBox text="비밀번호 확인" password={true} />
-          <TextBox text="이름" />
-          <TextBox text="닉네임" button={true} />
-          <Bottom
-            Left="가입하기"
-            LeftOnPress={() => alert('가입하기')}
-            Right="취소"
-            RightOnPress={() => alert('취소')}
-          />
-        </View>
+        <KeyboardAvoidingView behavior="padding" style={{ flex: 1 }}>
+          <Header navigation={this.props.navigation} centerText="회원가입" />
+          <View style={{ flex: 3, marginTop: 50 }}>
+            <TextBox
+              text="이메일"
+              buttonText="중복확인"
+              buttonOnPress={this._overlapChecking}
+            />
+            <TextBox text="비밀번호" password={true} />
+            <TextBox text="비밀번호 확인" password={true} />
+            <TextBox text="이름" />
+            <TextBox
+              text="닉네임"
+              buttonText="중복확인"
+              buttonOnPress={this._overlapChecking}
+            />
+            <Bottom
+              Left="가입하기"
+              LeftOnPress={() => alert('가입하기')}
+              Right="취소"
+              RightOnPress={() => alert('취소')}
+            />
+          </View>
+        </KeyboardAvoidingView>
       </View>
     );
   }
+  _overlapChecking = () => {
+    alert('중복 체크');
+  };
 }
 
 // define your styles

@@ -7,16 +7,15 @@ import Header from '../components/common/Header';
 import Subtitle from '../components/common/Subtitle';
 
 import ProjectThumbnail from '../components/Proj&Free/Project/ProjectThumbnail';
-import FilterButton from '../components/common/BottomButton';
+import FilterButton from '../components/Proj&Free/common/FilterButton';
 
 const projectList = [
   {
     title: '프로젝트2',
-    imgSrc: require('../../assets/images/Project/ProjectThumbnail/ProjectImage.png'),
     price: 20000,
-    endDueDate: '19.08.31',
-    Recruitment: 4,
-    major: 'C, C++',
+    dueDate: '19.08.31',
+    maxPeople: 4,
+    organization: '영남대학교',
   },
 ];
 
@@ -37,12 +36,11 @@ class ProjectList extends Component {
           {projectList.map((projectList, index) => {
             return (
               <ProjectThumbnail
-                imgSrc={projectList.imgSrc}
                 title={projectList.title}
                 price={projectList.price}
-                endDueDate={projectList.endDueDate}
-                Recruitment={projectList.Recruitment}
-                major={projectList.major}
+                dueDate={projectList.dueDate}
+                maxPeople={projectList.maxPeople}
+                organization={projectList.organization}
                 key={index}
                 navigation={this.props.navigation}
               />

@@ -6,16 +6,14 @@ import StatusBar from '../components/common/StatusBar';
 import Header from '../components/common/Header';
 import Subtitle from '../components/common/Subtitle';
 import FreelancerThumbnail from '../components/Proj&Free/Freelancer/FreelancerThumbnail';
-import FilterButton from '../components/common/BottomButton';
+import FilterButton from '../components/Proj&Free/common/FilterButton';
 
 const freelancerList = [
   {
     major: '산업디자인',
-    collage: '영남대학교',
-    rating: 4,
-    evaluation: 13,
+    organization: '영남대학교',
     grade: 3,
-    imgSrc: require('../../assets/images/Freelancer/FreelancerThumbnail/FreelancerImage.png'),
+    intro: '저는 영남대학교의 산업 디자인과에 다니고 있습니다.',
   },
 ];
 
@@ -37,11 +35,9 @@ class FreelancerList extends Component {
             return (
               <FreelancerThumbnail
                 major={freelancerList.major}
-                collage={freelancerList.collage}
+                organization={freelancerList.organization}
                 grade={freelancerList.grade}
-                rating={freelancerList.rating}
-                evaluation={freelancerList.evaluation}
-                imgSrc={freelancerList.imgSrc}
+                intro={freelancerList.intro}
                 key={index}
                 navigation={this.props.navigation}
               />

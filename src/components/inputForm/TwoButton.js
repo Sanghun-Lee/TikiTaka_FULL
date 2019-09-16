@@ -13,11 +13,21 @@ class TwoButton extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <Button rounded info style={styles.buttonStyle} onPress={this.props.LeftOnPress}>
-          <Text style={{ color: 'white' }}>{this.props.Left}</Text>
+        <Button
+          rounded
+          info
+          style={styles.buttonStyle}
+          onPress={this.props.LeftOnPress}
+        >
+          <Text style={styles.buttonText}>{this.props.Left}</Text>
         </Button>
-        <Button rounded info style={styles.buttonStyle} onPress={this.props.RightOnPress}>
-          <Text style={{ color: 'white' }}>{this.props.Right}</Text>
+        <Button
+          rounded
+          info
+          style={styles.buttonStyle}
+          onPress={this.props.RightOnPress}
+        >
+          <Text style={styles.buttonText}>{this.props.Right}</Text>
         </Button>
       </View>
     );
@@ -38,5 +48,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     width: 100,
     marginHorizontal: 10,
+  },
+  buttonText: {
+    color: 'white',
   },
 });

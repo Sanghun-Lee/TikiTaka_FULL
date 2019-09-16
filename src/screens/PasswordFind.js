@@ -2,11 +2,11 @@ import React, { Component } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 
 import StatusBar from '../components/common/StatusBar';
-import Logo from '../components/login/common/Logo';
-import Button from '../components/login/common/Button';
+import Logo from '../components/passwordFind/Logo';
+import Button from '../components/passwordFind/Button';
 
-import ExplanationBox from '../components/login/passwrodFind/ExplanationBox';
-import EmailInput from '../components/login/passwrodFind/EmailInput';
+import ExplanationBox from '../components/passwordFind/ExplanationBox';
+import EmailInput from '../components/passwordFind/EmailInput';
 
 class PasswordFind extends Component {
   render() {

@@ -1,6 +1,13 @@
 //import liraries
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, TextInput, TouchableOpacity } from 'react-native';
+import {
+  View,
+  Text,
+  StyleSheet,
+  TextInput,
+  TouchableOpacity,
+  KeyboardAvoidingView,
+} from 'react-native';
 import PropTypes from 'prop-types';
 
 // create a component
@@ -27,7 +34,10 @@ class TextBox extends Component {
         </View>
         <View style={{ flex: 1 }}>
           {this.props.buttonText !== undefined ? (
-            <TouchableOpacity style={styles.button} onPress={() => alert('중복 확인')}>
+            <TouchableOpacity
+              style={styles.button}
+              onPress={this.props.buttonOnPress}
+            >
               <Text style={styles.buttonText}>{this.props.buttonText}</Text>
             </TouchableOpacity>
           ) : null}
@@ -45,6 +55,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     margin: 10,
+    marginLeft: 15,
   },
   textInput: {
     height: 30,

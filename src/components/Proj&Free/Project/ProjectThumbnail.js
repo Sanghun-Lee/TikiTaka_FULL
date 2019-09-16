@@ -5,12 +5,11 @@ import PropTypes from 'prop-types';
 // 이미지는 어떻게 받아야 되는거지
 export default class ProjectThumbnail extends Component {
   static propTypes = {
-    imgSrc: PropTypes.number.isRequired,
     title: PropTypes.string.isRequired,
     price: PropTypes.number.isRequired,
-    endDueDate: PropTypes.string.isRequired,
-    Recruitment: PropTypes.number.isRequired,
-    major: PropTypes.string.isRequired,
+    dueDate: PropTypes.string.isRequired,
+    maxPeople: PropTypes.number.isRequired,
+    organization: PropTypes.string.isRequired,
   };
   state = {
     isFavorite: false,
@@ -28,30 +27,42 @@ export default class ProjectThumbnail extends Component {
           }}
         >
           <View style={styles.ImageView}>
-            <Image source={this.props.imgSrc} style={styles.ImageStyle} />
+            <Image
+              source={require('../../../../assets/images/Rayon.png')}
+              style={styles.ImageStyle}
+            />
           </View>
           <View style={{ flex: 2, flexDirection: 'column' }}>
             <View style={{ flex: 2, justifyContent: 'center' }}>
-              <Text style={{ fontSize: 20, fontWeight: 'bold' }}>{this.props.title}</Text>
+              <Text style={{ fontSize: 20, fontWeight: 'bold' }}>
+                {this.props.title}
+              </Text>
             </View>
             <View style={{ flex: 3, flexDirection: 'row' }}>
               <View style={{ flex: 1, justifyContent: 'center' }}>
-                <Text style={{ fontSize: 12 }}>모집인원 : {this.props.Recruitment}</Text>
-                <Text style={{ fontSize: 12 }}>필요 전공 : {this.props.major}</Text>
+                <Text style={{ fontSize: 12 }}>
+                  총 인원 : {this.props.maxPeople}
+                </Text>
+                <Text style={{ fontSize: 12 }}>
+                  조직 : {this.props.organization}
+                </Text>
               </View>
               <View style={{ flex: 1, justifyContent: 'center' }}>
                 <Text style={{ fontSize: 10, justifyContent: 'flex-end' }}>
                   금액 : {this.props.price}
                 </Text>
                 <Text style={{ fontSize: 10, justifyContent: 'flex-end' }}>
-                  모집기한 : ~ {this.props.endDueDate}
+                  모집기한 : ~ {this.props.dueDate}
                 </Text>
               </View>
             </View>
           </View>
         </TouchableOpacity>
         <View style={styles.favoriteView}>
-          <TouchableOpacity style={styles.favoriteOpacity} onPress={this._handlePressFavorite}>
+          <TouchableOpacity
+            style={styles.favoriteOpacity}
+            onPress={this._handlePressFavorite}
+          >
             {isFavorite ? (
               <Image
                 source={require('../../../../assets/images/Project/ProjectThumbnail/LikeEnable.png')}
