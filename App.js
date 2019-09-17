@@ -18,6 +18,7 @@ import MyPage from './src/screens/not complete/MyPage';
 import CreateNewProject from './src/screens/not complete/CreateNewProject';
 import SignUpPage from './src/screens/SignUpPage';
 import WriteMyInfo from './src/screens/not complete/WriteMyInfo';
+import Calendar from './src/components/inputForm/Calendar';
 
 import Temp from './temp';
 
@@ -45,6 +46,7 @@ const AppNavigator = createStackNavigator(
     CreateNewProject: { screen: CreateNewProject },
     SignUpPage: { screen: SignUpPage },
     WriteMyInfo: { screen: WriteMyInfo },
+    Calendar: { screen: Calendar },
   },
   {
     initialRouteKey: 'LoginPage',

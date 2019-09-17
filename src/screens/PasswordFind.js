@@ -9,6 +9,12 @@ import ExplanationBox from '../components/passwordFind/ExplanationBox';
 import EmailInput from '../components/passwordFind/EmailInput';
 
 class PasswordFind extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      userId: '',
+    };
+  }
   render() {
     return (
       <View style={styles.container}>
@@ -20,7 +26,10 @@ class PasswordFind extends Component {
           <ExplanationBox />
         </View>
         <View style={{ flex: 1 }}>
-          <EmailInput />
+          <EmailInput
+            value={this.state.userId}
+            onChangeText={userId => this.setState({ userId })}
+          />
         </View>
         <View style={{ flex: 1, flexDirection: 'row' }}>
           <View style={[{ flex: 1 }, styles.allCenter]}>

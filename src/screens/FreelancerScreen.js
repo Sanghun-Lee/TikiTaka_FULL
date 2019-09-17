@@ -8,6 +8,7 @@ import Subtitle from '../components/common/Subtitle';
 
 import Contents from '../components/Proj&Free/Freelancer/Contents';
 
+import List from '../components/Proj&Free/common/List';
 import Button from '../components/Proj&Free/common/MessageButton';
 import Favorite from '../components/Proj&Free/common/FavoriteButton';
 
@@ -42,23 +43,26 @@ class FreelancerScreen extends Component {
     return (
       <View style={styles.container}>
         <StatusBar />
-        <Header
-          navigation={this.props.navigation}
-          centerText="프리랜서 상세 화면"
-        />
+        <Header navigation={this.props.navigation} centerText="프리랜서 상세 화면" />
         <ScrollView>
           <Text style={styles.nickname}>{freelancer.nickname}</Text>
           <Text style={styles.organization}>
-            {freelancer.organization} / {freelancer.grade}
+            {freelancer.organization} / 학년 : {freelancer.grade}
           </Text>
           <Subtitle subtitle="한 줄 소개" />
           <Text style={styles.intro}>{freelancer.intro}</Text>
           <Subtitle subtitle="주 활동 카테고리" />
-
+          {freelancer.categoryList.map((categoryList, index) => {
+            return <List first={categoryList} key={index} />;
+          })}
           <Subtitle subtitle="학력" />
-
+          {freelancer.educationList.map((educationList, index) => {
+            return <List first={educationList.place} second={educationList.grade} key={index} />;
+          })}
           <Subtitle subtitle="자격증 리스트" />
-
+          {freelancer.lisenceList.map((lisenceList, index) => {
+            return <List first={lisenceList.lisence} second={lisenceList.getDate} key={index} />;
+          })}
           <View style={{ height: 100, flexDirection: 'row' }}>
             <View style={[styles.center, { flex: 5 }]}>
               <Button text="메시지 보내기" onPress={this._PressMessageButton} />
@@ -98,7 +102,7 @@ const styles = StyleSheet.create({
   },
   intro: {
     fontSize: 20,
-    margin: 10,
+    margin: 20,
   },
 });
 

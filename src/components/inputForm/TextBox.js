@@ -27,9 +27,13 @@ class TextBox extends Component {
         </View>
         <View style={{ flex: 4 }}>
           {this.props.password ? (
-            <TextInput style={styles.textInput} secureTextEntry={true} />
+            <TextInput
+              {...this.props}
+              style={styles.textInput}
+              secureTextEntry={true}
+            />
           ) : (
-            <TextInput style={styles.textInput} />
+            <TextInput {...this.props} style={styles.textInput} />
           )}
         </View>
         <View style={{ flex: 1 }}>

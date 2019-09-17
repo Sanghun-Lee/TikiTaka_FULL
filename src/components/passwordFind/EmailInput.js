@@ -1,11 +1,12 @@
-import React, { Component } from "react";
-import { View, StyleSheet, TextInput } from "react-native";
+import React, { Component } from 'react';
+import { View, StyleSheet, TextInput } from 'react-native';
 
 export default class EmailInput extends Component {
   render() {
     return (
       <View style={styles.container}>
         <TextInput
+          {...this.props}
           style={styles.textInput}
           placeholder="Email"
           returnKeyType="done"
@@ -18,9 +19,9 @@ export default class EmailInput extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "rgba(255,255,255,1)",
-    justifyContent: "center",
-    alignItems: "center"
+    backgroundColor: 'rgba(255,255,255,1)',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   textInput: {
     width: 300,
@@ -28,9 +29,9 @@ const styles = StyleSheet.create({
     fontSize: 15,
 
     borderRadius: 13,
-    borderColor: "rgba(239,239,239,1)",
+    borderColor: 'rgba(239,239,239,1)',
     borderWidth: 1,
 
-    paddingLeft: 10
-  }
+    paddingLeft: 10,
+  },
 });

@@ -46,58 +46,23 @@ class BottomButton extends Component {
     this.setState({ selectedItem: selected });
   }
 
-  _setFilter = () => alert('필터 적용 버튼');
-
   _renderJustButton = (text, onPress) => (
     <TouchableOpacity onPress={onPress}>
-      <View
-        style={{
-          backgroundColor: 'lightblue',
-          justifyContent: 'center',
-          alignItems: 'center',
-          borderRadius: 4,
-          marginRight: 25,
-          marginBottom: 20,
-          padding: 10,
-          borderColor: 'rgba(0, 0, 0, 0.1)',
-        }}
-      >
+      <View style={styles.button}>
         <Text>{text}</Text>
       </View>
     </TouchableOpacity>
   );
 
   _renderModalContent = () => (
-    <View
-      style={{
-        backgroundColor: 'white',
-        padding: 22,
-        borderTopRightRadius: 10,
-        borderTopLeftRadius: 10,
-        borderColor: 'rgba(0, 0, 0, 0.1)',
-        marginRight: 20,
-        marginLeft: 20,
-      }}
-    >
+    <View style={styles.modalBackground}>
       <View style={{ flexDirection: 'row', marginBottom: 10 }}>
-        <Text
-          style={{ fontWeight: 'bold', marginRight: 150, textAlign: 'center' }}
-        >
-          필터 선택
-        </Text>
-        {this._renderJustButton('적용', this._setFilter)}
+        <Text style={styles.filterSelectText}>필터 선택</Text>
+        {this._renderJustButton('적용', this.props.onPress)}
         {this._renderJustButton('취소', this._visibleSetNull)}
       </View>
       <View>
-        <Text
-          style={{
-            fontSize: 15,
-            fontWeight: 'bold',
-            marginBottom: 5,
-          }}
-        >
-          1. 학년
-        </Text>
+        <Text style={styles.text}>1. 학년</Text>
         <PickerModal
           onSelected={selected => this.selected(selected)}
           items={gradeList}
@@ -110,15 +75,7 @@ class BottomButton extends Component {
           autoSort={true}
           selectPlaceholderText={'학년'}
         />
-        <Text
-          style={{
-            fontSize: 15,
-            fontWeight: 'bold',
-            marginBottom: 5,
-          }}
-        >
-          2. 학교
-        </Text>
+        <Text style={styles.text}>2. 학교</Text>
         <PickerModal
           onSelected={selected => this.selected(selected)}
           items={collageList}
@@ -173,6 +130,35 @@ const styles = StyleSheet.create({
     marginLeft: 30,
     borderTopRightRadius: 10,
     borderTopLeftRadius: 10,
+  },
+  filterSelectText: {
+    fontWeight: 'bold',
+    marginRight: 150,
+    textAlign: 'center',
+  },
+  text: {
+    fontSize: 15,
+    fontWeight: 'bold',
+    marginBottom: 5,
+  },
+  button: {
+    backgroundColor: 'lightblue',
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: 4,
+    marginRight: 25,
+    marginBottom: 20,
+    padding: 10,
+    borderColor: 'rgba(0, 0, 0, 0.1)',
+  },
+  modalBackground: {
+    backgroundColor: 'white',
+    padding: 22,
+    borderTopRightRadius: 10,
+    borderTopLeftRadius: 10,
+    borderColor: 'rgba(0, 0, 0, 0.1)',
+    marginRight: 20,
+    marginLeft: 20,
   },
 });
 

@@ -7,6 +7,7 @@ import Header from '../components/common/Header';
 import Subtitle from '../components/common/Subtitle';
 import Button from '../components/Proj&Free/common/MessageButton';
 import Favorite from '../components/Proj&Free/common/FavoriteButton';
+import List from '../components/Proj&Free/common/List';
 
 const project = {
   projectId: 12345,
@@ -39,19 +40,18 @@ class ProjectScreen extends Component {
     return (
       <View style={styles.container}>
         <StatusBar />
-        <Header
-          navigation={this.props.navigation}
-          centerText="프로젝트 상세화면"
-        />
+        <Header navigation={this.props.navigation} centerText="프로젝트 상세화면" />
         <ScrollView>
           <Text style={styles.title}>{project.title}</Text>
           <Text style={styles.organization}>{project.organization}</Text>
           <Subtitle subtitle="참가 인원" />
-          <Text>
-            {project.freeList[0].name}, {project.freeList[0].role}
-          </Text>
+          {project.freeList.map((freeList, index) => {
+            return <List first={freeList.name} second={freeList.role} key={index} />;
+          })}
           <Subtitle subtitle="카테고리" />
-
+          {project.categoryList.map((categoryList, index) => {
+            return <List first={categoryList} key={index} />;
+          })}
           <Subtitle subtitle="설명" />
           <Text style={styles.description}>{project.description}</Text>
           <Text style={styles.info}>모집 기한 : {project.dueDate}</Text>

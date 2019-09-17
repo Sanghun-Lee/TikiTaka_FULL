@@ -17,3 +17,8 @@
 <!-- > - npm install react-native-action-button --save -->
 
 ## 각 화면별 사용되는 변수와 필요한 데이터
+
+TextInput이 있는 곳
+
+- SignUpPage
+- PasswordFind

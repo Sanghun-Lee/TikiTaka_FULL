@@ -38,10 +38,6 @@ class MyPage extends Component {
           toggleSwitchs={this.toggleFreeFlag}
           switchValues={this.state.freeFlag}
         />
-        <Text>
-          사진, 이름, 학년, 한 줄 소개, 전공 카테고리, 자격증, career, education, 완료한 프로젝트
-          리스트
-        </Text>
         {this.state.freeFlag ? <Freelancer /> : <NotFreelancer />}
       </View>
     );
