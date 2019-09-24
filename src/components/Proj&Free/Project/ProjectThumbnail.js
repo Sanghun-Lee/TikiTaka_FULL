@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
-import { StyleSheet, View, Text, TouchableOpacity, Image } from 'react-native';
-import PropTypes from 'prop-types';
+import React, { Component } from "react";
+import { StyleSheet, View, Text, TouchableOpacity, Image } from "react-native";
+import PropTypes from "prop-types";
 
 // 이미지는 어떻게 받아야 되는거지
 export default class ProjectThumbnail extends Component {
@@ -10,9 +10,10 @@ export default class ProjectThumbnail extends Component {
     dueDate: PropTypes.string.isRequired,
     maxPeople: PropTypes.number.isRequired,
     organization: PropTypes.string.isRequired,
+    navi: PropTypes.string
   };
   state = {
-    isFavorite: false,
+    isFavorite: false
   };
 
   render() {
@@ -22,24 +23,22 @@ export default class ProjectThumbnail extends Component {
       <View style={styles.container}>
         <TouchableOpacity
           style={[styles.container, { flex: 8 }]}
-          onPress={() => {
-            this.props.navigation.navigate('ProjectScreen');
-          }}
+          onPress={this._handlePressProject}
         >
           <View style={styles.ImageView}>
             <Image
-              source={require('../../../../assets/images/Rayon.png')}
+              source={require("../../../../assets/images/Rayon.png")}
               style={styles.ImageStyle}
             />
           </View>
-          <View style={{ flex: 2, flexDirection: 'column' }}>
-            <View style={{ flex: 2, justifyContent: 'center' }}>
-              <Text style={{ fontSize: 20, fontWeight: 'bold' }}>
+          <View style={{ flex: 2, flexDirection: "column" }}>
+            <View style={{ flex: 2, justifyContent: "center" }}>
+              <Text style={{ fontSize: 20, fontWeight: "bold" }}>
                 {this.props.title}
               </Text>
             </View>
-            <View style={{ flex: 3, flexDirection: 'row' }}>
-              <View style={{ flex: 1, justifyContent: 'center' }}>
+            <View style={{ flex: 3, flexDirection: "row" }}>
+              <View style={{ flex: 1, justifyContent: "center" }}>
                 <Text style={{ fontSize: 12 }}>
                   총 인원 : {this.props.maxPeople}
                 </Text>
@@ -47,11 +46,11 @@ export default class ProjectThumbnail extends Component {
                   조직 : {this.props.organization}
                 </Text>
               </View>
-              <View style={{ flex: 1, justifyContent: 'center' }}>
-                <Text style={{ fontSize: 10, justifyContent: 'flex-end' }}>
+              <View style={{ flex: 1, justifyContent: "center" }}>
+                <Text style={{ fontSize: 10, justifyContent: "flex-end" }}>
                   금액 : {this.props.price}
                 </Text>
-                <Text style={{ fontSize: 10, justifyContent: 'flex-end' }}>
+                <Text style={{ fontSize: 10, justifyContent: "flex-end" }}>
                   모집기한 : ~ {this.props.dueDate}
                 </Text>
               </View>
@@ -65,12 +64,12 @@ export default class ProjectThumbnail extends Component {
           >
             {isFavorite ? (
               <Image
-                source={require('../../../../assets/images/Project/ProjectThumbnail/LikeEnable.png')}
+                source={require("../../../../assets/images/Project/ProjectThumbnail/LikeEnable.png")}
                 style={styles.favoriteImage}
               />
             ) : (
               <Image
-                source={require('../../../../assets/images/Project/ProjectThumbnail/LikeDisable.png')}
+                source={require("../../../../assets/images/Project/ProjectThumbnail/LikeDisable.png")}
                 style={styles.favoriteImage}
               />
             )}
@@ -81,12 +80,12 @@ export default class ProjectThumbnail extends Component {
   }
 
   _handlePressProject = () => {
-    this.props.navigation.navigate('ProjectScreen');
+    this.props.navigation.navigate(this.props.navi);
   };
   _handlePressFavorite = () => {
     this.setState(prevState => {
       return {
-        isFavorite: !prevState.isFavorite,
+        isFavorite: !prevState.isFavorite
       };
     });
   };
@@ -95,35 +94,35 @@ export default class ProjectThumbnail extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    flexDirection: 'row',
+    flexDirection: "row",
     height: 92,
-    borderBottomColor: '#E4E4E4',
-    borderBottomWidth: 1,
+    borderBottomColor: "#E4E4E4",
+    borderBottomWidth: 1
   },
   ImageView: {
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
+    alignItems: "center",
+    justifyContent: "center"
   },
   ImageStyle: {
     width: 64.57,
-    height: 64.57,
+    height: 64.57
   },
 
   favoriteView: {
-    borderBottomColor: '#E4E4E4',
+    borderBottomColor: "#E4E4E4",
     borderBottomWidth: 1,
     flex: 1,
-    height: 92,
+    height: 92
   },
   favoriteOpacity: {
     marginLeft: 5,
     marginTop: 60,
     width: 20,
-    height: 20,
+    height: 20
   },
   favoriteImage: {
     width: 17.7,
-    height: 16.09,
-  },
+    height: 16.09
+  }
 });

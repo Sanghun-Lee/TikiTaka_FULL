@@ -1,44 +1,43 @@
-import React, { Component } from 'react';
-import { View, StyleSheet, ScrollView } from 'react-native';
-import { Content, Drawer } from 'native-base';
+import React, { Component } from "react";
+import { View, StyleSheet, ScrollView } from "react-native";
+import { Content, Drawer } from "native-base";
 
-import StatusBar from '../components/common/StatusBar';
-import Header from '../components/common/Header';
-import Advertise from '../components/MainPage/Advertise';
-import Category from '../components/MainPage/Category';
-import TimeLine from '../components/MainPage/TimeLine';
-import DrawerPage from '../components/MainPage/DrawerPage';
+import StatusBar from "../components/common/StatusBar";
+import Header from "../components/common/Header";
+import Advertise from "../components/MainPage/Advertise";
+import Category from "../components/MainPage/Category";
+import TimeLine from "../components/MainPage/TimeLine";
+import DrawerPage from "../components/MainPage/DrawerPage";
 
 const TimeLineContents = [
   {
-    writer: '이상훈',
-    writeDate: '2015년 6월 16일',
-    description: '님이 입대를 했습니다',
-    thumbnail: require('../../assets/images/MainPage/TimeLine/daeguCircle01.png'),
+    writer: "이상훈",
+    writeDate: "2019년 4월 16일",
+    description: "님이 티키타카 프로젝트를 새롭게 등록하였습니다.",
+    thumbnail: require("../../assets/images/MainPage/TimeLine/daeguCircle01.png"),
     onPress: () => {
-      alert('...');
-    },
+      alert("...");
+    }
   },
   {
-    writer: '이상훈',
-    writeDate: '2017년 3월 15일',
-    description: '님이 전역를 했습니다',
-    thumbnail: require('../../assets/images/MainPage/TimeLine/daeguCircle01.png'),
-    onPress: this._cardOnPress,
+    writer: "김민수",
+    writeDate: "2019년 4월 25일",
+    description: "님이 티키타카 프로젝트에 참여하였습니다.",
+    thumbnail: require("../../assets/images/MainPage/TimeLine/daeguCircle01.png"),
+    onPress: this._cardOnPress
   },
   {
-    writer: '타임라인',
-    writeDate: '2019년 9월 12일',
-    description:
-      '은 아무리 길어도 두 줄이 넘어가지 않습니다. 내가 이렇게 많이 작성을 하고 또 오늘 추석이고 그리고 음 또 쓸 말이 없는데 아무튼 두 줄이 넘어가면 ... 이 나옵니다.',
-    thumbnail: require('../../assets/images/MainPage/TimeLine/daeguCircle01.png'),
-    onPress: this._cardOnPress,
-  },
+    writer: "티키타카",
+    writeDate: "2019년 6월 5일",
+    description: "프로젝트의 등록일까지 30일 남았습니다.",
+    thumbnail: require("../../assets/images/MainPage/TimeLine/daeguCircle01.png"),
+    onPress: this._cardOnPress
+  }
 ];
 
 class MainPage extends Component {
   state = {
-    name: '훈',
+    name: "hun"
   };
   closeDrawer = () => {
     this.drawer._root.close();
@@ -96,7 +95,7 @@ class MainPage extends Component {
     );
   }
   _cardOnPress = () => {
-    alert('card pressed');
+    alert("card pressed");
   };
 }
 
@@ -104,23 +103,23 @@ export default MainPage;
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    flex: 1
   },
   center: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: "center",
+    alignItems: "center"
   },
   titleBar: {
     height: 44,
-    flexDirection: 'row',
-    backgroundColor: '#38C8EC',
+    flexDirection: "row",
+    backgroundColor: "#38C8EC"
   },
   tikitakaText: {
     flex: 6,
-    textAlign: 'center',
-    textAlignVertical: 'center',
-    color: 'white',
-    fontSize: 16,
-  },
+    textAlign: "center",
+    textAlignVertical: "center",
+    color: "white",
+    fontSize: 16
+  }
 });

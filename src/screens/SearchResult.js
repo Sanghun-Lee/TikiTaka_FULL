@@ -1,36 +1,68 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 import {
   StyleSheet,
   Text,
   View,
   ScrollView,
   TouchableOpacity,
-  Image,
-} from 'react-native';
+  Image
+} from "react-native";
 
-import StatusBar from '../components/common/StatusBar';
-import Header from '../components/common/Header';
-import Subtitle from '../components/common/Subtitle';
-import ProjectThumbnail from '../components/Proj&Free/Project/ProjectThumbnail';
-import FreelancerThumbnail from '../components/Proj&Free/Freelancer/FreelancerThumbnail';
+import StatusBar from "../components/common/StatusBar";
+import Header from "../components/common/Header";
+import Subtitle from "../components/common/Subtitle";
+import ProjectThumbnail from "../components/Proj&Free/Project/ProjectThumbnail";
+import FreelancerThumbnail from "../components/Proj&Free/Freelancer/FreelancerThumbnail";
 
 const projectList = [
   {
-    title: '프로젝트2',
-    price: 20000,
-    dueDate: '19.08.31',
-    maxPeople: 4,
-    organization: '영남대학교',
+    title: "빅데이터 공모전",
+    price: 100000,
+    dueDate: "19.10.8",
+    maxPeople: 5,
+    organization: "영남대학교",
+    navi: "Project1"
   },
+  {
+    title: "광고 공모전",
+    price: 20000,
+    dueDate: "19.08.12",
+    maxPeople: 4,
+    organization: "영남대학교",
+    navi: "Project2"
+  },
+  {
+    title: "같이 연구 하실분",
+    price: 20000,
+    dueDate: "19.12.31",
+    maxPeople: 3,
+    organization: "영남대학교",
+    navi: "Project3"
+  }
 ];
 
 const freelancerList = [
   {
-    major: '산업디자인',
-    organization: '영남대학교',
+    major: "산업디자인",
+    organization: "영남대학교",
     grade: 3,
-    intro: '저는 영남대학교의 산업 디자인과에 다니고 있습니다.',
+    intro: "저는 영남대학교의 산업 디자인과에 다니고 있습니다.",
+    navi: "Freelancer1"
   },
+  {
+    major: "컴퓨터 공학과",
+    organization: "영남대학교",
+    grade: 4,
+    intro: "C언어와 JAVA언어를 주로 사용합니다.",
+    navi: "Freelancer2"
+  },
+  {
+    major: "기계공학과",
+    organization: "영남대학교",
+    grade: 3,
+    intro: "2곳의 공모전에서 수상한 경험이 있습니다.",
+    navi: "Freelancer3"
+  }
 ];
 
 export default class SearchResult extends Component {
@@ -56,17 +88,18 @@ export default class SearchResult extends Component {
                 organization={projectList.organization}
                 key={index}
                 navigation={this.props.navigation}
+                navi={projectList.navi}
               />
             );
           })}
           <View style={styles.tapMore}>
             <TouchableOpacity
               onPress={this._handlePressProjectMore}
-              style={{ flex: 1, flexDirection: 'row', alignItems: 'center' }}
+              style={{ flex: 1, flexDirection: "row", alignItems: "center" }}
             >
               <Text style={styles.tapMoreText}>더 보기</Text>
               <Image
-                source={require('../../assets/images/Freelancer/FreelancerThumbnail/SearchMoreIcon.png')}
+                source={require("../../assets/images/Freelancer/FreelancerThumbnail/SearchMoreIcon.png")}
                 style={styles.tapMoreIcon}
               />
             </TouchableOpacity>
@@ -81,17 +114,18 @@ export default class SearchResult extends Component {
                 intro={freelancerList.intro}
                 key={index}
                 navigation={this.props.navigation}
+                navi={freelancerList.navi}
               />
             );
           })}
           <View style={styles.tapMore}>
             <TouchableOpacity
-              style={{ flex: 1, flexDirection: 'row', alignItems: 'center' }}
+              style={{ flex: 1, flexDirection: "row", alignItems: "center" }}
               onPress={this._handlePressFreelancerMore}
             >
               <Text style={styles.tapMoreText}>더 보기</Text>
               <Image
-                source={require('../../assets/images/Freelancer/FreelancerThumbnail/SearchMoreIcon.png')}
+                source={require("../../assets/images/Freelancer/FreelancerThumbnail/SearchMoreIcon.png")}
                 style={styles.tapMoreIcon}
               />
             </TouchableOpacity>
@@ -103,34 +137,34 @@ export default class SearchResult extends Component {
   }
 
   _handlePressProjectMore = () => {
-    this.props.navigation.navigate('ProjectList');
+    this.props.navigation.navigate("ProjectList");
   };
   _handlePressFreelancerMore = () => {
-    this.props.navigation.navigate('FreelancerList');
+    this.props.navigation.navigate("FreelancerList");
   };
   _PressSearchIcon = () => {
-    this.props.navigation.navigate('Search');
+    this.props.navigation.navigate("Search");
   };
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    flex: 1
   },
   tapMore: {
     height: 35,
-    alignItems: 'flex-end',
+    alignItems: "flex-end"
   },
   tapMoreText: {
-    textAlign: 'right',
-    textAlignVertical: 'center',
+    textAlign: "right",
+    textAlignVertical: "center",
     fontSize: 10,
-    marginRight: 8,
+    marginRight: 8
   },
   tapMoreIcon: {
     marginLeft: 3,
     width: 5.31,
     height: 8.69,
-    marginRight: 10,
-  },
+    marginRight: 10
+  }
 });

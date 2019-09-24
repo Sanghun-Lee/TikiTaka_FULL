@@ -10,7 +10,7 @@ export default class StatusBar extends React.Component {
 
 const styles = StyleSheet.create({
   statusBar: {
-    backgroundColor: "#ff000f",
+    backgroundColor: "#35CBEE",
     height: Constants.statusBarHeight
   }
 });

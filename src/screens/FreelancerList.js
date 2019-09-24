@@ -1,20 +1,49 @@
 //import liraries
-import React, { Component } from 'react';
-import { View, StyleSheet, ScrollView } from 'react-native';
+import React, { Component } from "react";
+import { View, StyleSheet, ScrollView } from "react-native";
 
-import StatusBar from '../components/common/StatusBar';
-import Header from '../components/common/Header';
-import Subtitle from '../components/common/Subtitle';
-import FreelancerThumbnail from '../components/Proj&Free/Freelancer/FreelancerThumbnail';
-import FilterButton from '../components/Proj&Free/common/FilterButton';
+import StatusBar from "../components/common/StatusBar";
+import Header from "../components/common/Header";
+import Subtitle from "../components/common/Subtitle";
+import FreelancerThumbnail from "../components/Proj&Free/Freelancer/FreelancerThumbnail";
+import FilterButton from "../components/Proj&Free/common/FilterButton";
 
 const freelancerList = [
   {
-    major: '산업디자인',
-    organization: '영남대학교',
+    major: "산업디자인",
+    organization: "영남대학교",
     grade: 3,
-    intro: '저는 영남대학교의 산업 디자인과에 다니고 있습니다.',
+    intro: "저는 영남대학교의 산업 디자인과에 다니고 있습니다.",
+    navi: "Freelancer1"
   },
+  {
+    major: "컴퓨터 공학과",
+    organization: "영남대학교",
+    grade: 4,
+    intro: "C언어와 JAVA언어를 주로 사용합니다.",
+    navi: "Freelancer2"
+  },
+  {
+    major: "기계공학과",
+    organization: "영남대학교",
+    grade: 3,
+    intro: "2곳의 공모전에서 수상한 경험이 있습니다.",
+    navi: "Freelancer3"
+  },
+  {
+    major: "영어 영문학과",
+    organization: "영남대학교",
+    grade: 3,
+    intro: "영어 번역 해드립니다.",
+    navi: "Freelancer4"
+  },
+  {
+    major: "수학과",
+    organization: "영남대학교",
+    grade: 3,
+    intro: "수학과외 필요하신분 연락주세요",
+    navi: "Freelancer5"
+  }
 ];
 
 // create a component
@@ -40,6 +69,7 @@ class FreelancerList extends Component {
                 intro={freelancerList.intro}
                 key={index}
                 navigation={this.props.navigation}
+                navi={freelancerList.navi}
               />
             );
           })}
@@ -47,21 +77,21 @@ class FreelancerList extends Component {
         <FilterButton
           title="필터 적용"
           IconName="ios-options"
-          onPress={() => alert('button Pressed')}
+          onPress={() => alert("button Pressed")}
         />
       </View>
     );
   }
   _PressSearchIcon = () => {
-    this.props.navigation.navigate('Search');
+    this.props.navigation.navigate("Search");
   };
 }
 
 // define your styles
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-  },
+    flex: 1
+  }
 });
 
 //make this component available to the app
