@@ -1,60 +1,55 @@
 //import liraries
-import React, { Component } from "react";
-import { View, StyleSheet, Alert, ScrollView } from "react-native";
+import React, {Component} from 'react';
+import {View, StyleSheet, Alert, ScrollView} from 'react-native';
 
-import StatusBar from "../components/common/StatusBar";
-import Header from "../components/common/Header";
-import Subtitle from "../components/common/Subtitle";
+import StatusBar from '../components/common/StatusBar';
+import Header from '../components/common/Header';
+import Subtitle from '../components/common/Subtitle';
 
-import ProjectThumbnail from "../components/Proj&Free/Project/ProjectThumbnail";
-import FilterButton from "../components/Proj&Free/common/FilterButton";
+import ProjectThumbnail from '../components/Proj&Free/Project/ProjectThumbnail';
+import FilterButton from '../components/Proj&Free/common/FilterButton';
 
 const projectList = [
   {
-    title: "빅데이터 공모전",
+    title: '빅데이터 공모전',
     price: 100000,
-    dueDate: "2019.10.8",
+    dueDate: '2019.10.8',
     maxPeople: 5,
-    organization: "영남대학교",
-    navi: "Project1"
+    organization: '영남대학교',
   },
   {
-    title: "광고 공모전",
+    title: '광고 공모전',
     price: 20000,
-    dueDate: "2019.08.12",
+    dueDate: '2019.08.12',
     maxPeople: 4,
-    organization: "영남대학교",
-    navi: "Project2"
+    organization: '영남대학교',
   },
   {
-    title: "같이 연구 하실분",
+    title: '같이 연구 하실분',
     price: 20000,
-    dueDate: "2019.12.31",
+    dueDate: '2019.12.31',
     maxPeople: 3,
-    organization: "영남대학교",
-    navi: "Project3"
+    organization: '영남대학교',
   },
   {
-    title: "어플 디자인팀 구해요",
+    title: '어플 디자인팀 구해요',
     price: 100000,
-    dueDate: "2019.10.21",
+    dueDate: '2019.10.21',
     maxPeople: 4,
-    organization: "영남대학교",
-    navi: "Project4"
+    organization: '영남대학교',
   },
   {
-    title: "티키타카 프로젝트",
+    title: '티키타카 프로젝트',
     price: 0,
-    dueDate: "2019.07.31",
+    dueDate: '2019.07.31',
     maxPeople: 6,
-    organization: "영남대학교",
-    navi: "Project5"
-  }
+    organization: '영남대학교',
+  },
 ];
 
 // create a component
 class ProjectList extends Component {
-  render() {
+  render () {
     return (
       <View style={styles.container}>
         <StatusBar />
@@ -66,7 +61,7 @@ class ProjectList extends Component {
         />
         <Subtitle subtitle="프로젝트" />
         <ScrollView>
-          {projectList.map((projectList, index) => {
+          {projectList.map ((projectList, index) => {
             return (
               <ProjectThumbnail
                 title={projectList.title}
@@ -76,7 +71,6 @@ class ProjectList extends Component {
                 organization={projectList.organization}
                 key={index}
                 navigation={this.props.navigation}
-                navi={projectList.navi}
               />
             );
           })}
@@ -84,21 +78,21 @@ class ProjectList extends Component {
         <FilterButton
           title="필터 적용"
           IconName="ios-options"
-          onPress={() => alert("button Pressed")}
+          onPress={() => alert ('button Pressed')}
         />
       </View>
     );
   }
   _PressSearchIcon = () => {
-    this.props.navigation.navigate("Search");
+    this.props.navigation.navigate ('Search');
   };
 }
 
 // define your styles
-const styles = StyleSheet.create({
+const styles = StyleSheet.create ({
   container: {
-    flex: 1
-  }
+    flex: 1,
+  },
 });
 
 //make this component available to the app

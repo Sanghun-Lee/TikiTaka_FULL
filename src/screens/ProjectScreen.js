@@ -1,6 +1,6 @@
 //import liraries
-import React, { Component } from 'react';
-import { View, Text, StyleSheet, ScrollView } from 'react-native';
+import React, {Component} from 'react';
+import {View, Text, StyleSheet, ScrollView} from 'react-native';
 
 import StatusBar from '../components/common/StatusBar';
 import Header from '../components/common/Header';
@@ -31,25 +31,35 @@ const project = {
       role: '팀원1',
     },
   ],
-  candiList: [],
+  candiList: [
+    {
+      name: 'hun',
+    },
+    {
+      name: 'min',
+    },
+  ],
 };
 
 // create a component
 class ProjectScreen extends Component {
-  render() {
+  render () {
     return (
       <View style={styles.container}>
         <StatusBar />
         <Header navigation={this.props.navigation} centerText="프로젝트 상세화면" />
+
         <ScrollView>
           <Text style={styles.title}>{project.title}</Text>
           <Text style={styles.organization}>{project.organization}</Text>
           <Subtitle subtitle="참가 인원" />
-          {project.freeList.map((freeList, index) => {
-            return <List first={freeList.name} second={freeList.role} key={index} />;
+          {project.freeList.map ((freeList, index) => {
+            return (
+              <List first={freeList.name} second={freeList.role} key={index} />
+            );
           })}
           <Subtitle subtitle="카테고리" />
-          {project.categoryList.map((categoryList, index) => {
+          {project.categoryList.map ((categoryList, index) => {
             return <List first={categoryList} key={index} />;
           })}
           <Subtitle subtitle="설명" />
@@ -59,25 +69,29 @@ class ProjectScreen extends Component {
           <Text style={styles.info}>총 인원 : {project.maxPeople}명</Text>
           <Text style={styles.info}>금액 : {project.price}원</Text>
 
-          <View style={{ height: 100, flexDirection: 'row' }}>
-            <View style={[styles.center, { flex: 5 }]}>
-              <Button text="메시지 보내기" onPress={this._PressMessageButton} />
+          <View style={{height: 100, flexDirection: 'row'}}>
+            <View style={[styles.center, {flex: 5}]}>
+              <Button text="프로젝트 참가하기" onPress={this._PressMessageButton} />
             </View>
-            <View style={[styles.center, { flex: 1 }]}>
+            <View style={[styles.center, {flex: 1}]}>
               <Favorite />
             </View>
           </View>
+          <Subtitle subtitle="프로젝트 지원자" />
+          {project.candiList.map ((candilist, index) => {
+            return <List first={candilist.name} key={index} />;
+          })}
         </ScrollView>
       </View>
     );
   }
   _PressMessageButton = () => {
-    alert('메시지 보내기');
+    alert ('메시지 보내기');
   };
 }
 
 // define your styles
-const styles = StyleSheet.create({
+const styles = StyleSheet.create ({
   container: {
     flex: 1,
   },

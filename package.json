@@ -10,6 +10,7 @@
   "dependencies": {
     "@builderx/icons": "^0.1.6",
     "@builderx/utils": "^0.1.6",
+    "deprecated-react-native-listview": "0.0.6",
     "expo": "^34.0.1",
     "expo-asset": "^6.0.0",
     "expo-constants": "^6.0.0",

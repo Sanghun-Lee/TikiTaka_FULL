@@ -1,6 +1,6 @@
 //import liraries
-import React, { Component } from 'react';
-import { View, StyleSheet, ScrollView, Text } from 'react-native';
+import React, {Component} from 'react';
+import {View, StyleSheet, ScrollView, Text} from 'react-native';
 
 import StatusBar from '../components/common/StatusBar';
 import Header from '../components/common/Header';
@@ -39,7 +39,7 @@ const freelancer = {
 
 // create a component
 class FreelancerScreen extends Component {
-  render() {
+  render () {
     return (
       <View style={styles.container}>
         <StatusBar />
@@ -52,22 +52,34 @@ class FreelancerScreen extends Component {
           <Subtitle subtitle="한 줄 소개" />
           <Text style={styles.intro}>{freelancer.intro}</Text>
           <Subtitle subtitle="주 활동 카테고리" />
-          {freelancer.categoryList.map((categoryList, index) => {
+          {freelancer.categoryList.map ((categoryList, index) => {
             return <List first={categoryList} key={index} />;
           })}
           <Subtitle subtitle="학력" />
-          {freelancer.educationList.map((educationList, index) => {
-            return <List first={educationList.place} second={educationList.grade} key={index} />;
+          {freelancer.educationList.map ((educationList, index) => {
+            return (
+              <List
+                first={educationList.place}
+                second={educationList.grade}
+                key={index}
+              />
+            );
           })}
           <Subtitle subtitle="자격증 리스트" />
-          {freelancer.lisenceList.map((lisenceList, index) => {
-            return <List first={lisenceList.lisence} second={lisenceList.getDate} key={index} />;
+          {freelancer.lisenceList.map ((lisenceList, index) => {
+            return (
+              <List
+                first={lisenceList.lisence}
+                second={lisenceList.getDate}
+                key={index}
+              />
+            );
           })}
-          <View style={{ height: 100, flexDirection: 'row' }}>
-            <View style={[styles.center, { flex: 5 }]}>
+          <View style={{height: 100, flexDirection: 'row'}}>
+            <View style={[styles.center, {flex: 5}]}>
               <Button text="메시지 보내기" onPress={this._PressMessageButton} />
             </View>
-            <View style={[styles.center, { flex: 1 }]}>
+            <View style={[styles.center, {flex: 1}]}>
               <Favorite />
             </View>
           </View>
@@ -76,12 +88,12 @@ class FreelancerScreen extends Component {
     );
   }
   _PressMessageButton = () => {
-    alert('메시지 보내기');
+    alert ('메시지 보내기');
   };
 }
 
 // define your styles
-const styles = StyleSheet.create({
+const styles = StyleSheet.create ({
   container: {
     flex: 1,
   },
