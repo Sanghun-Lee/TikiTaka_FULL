@@ -26,22 +26,8 @@ export default class WriteMyInfo extends Component {
       grade: '4',
       organization: '영남대학교',
       category: [],
-      educationList: [
-        {
-          place: '경상고',
-          grade: 3,
-        },
-        {
-          place: '영남대학교',
-          grade: 4,
-        },
-      ],
-      lisenceList: [
-        {
-          lisence: '정보처리기사',
-          getDate: '2019-08-01',
-        },
-      ],
+      educationList: ['경상고', '영남대'],
+      lisenceList: ['정보처리기사', '6시그마'],
       design: false,
       movie: false,
       translate: false,
@@ -143,15 +129,50 @@ export default class WriteMyInfo extends Component {
             </View>
           </View>
           <Subtitle subtitle="학력" />
-          <View style={{height: 70, borderWidth: 1}}>
+          <View style={styles.textInput}>
             <TextBox
               text="학교"
-              value={this.state.educationList[0].place}
-              onChangeText={place => this.setState ({educationList: place})}
+              value={this.state.educationList[0]}
+              onChangeText={text => this._updateEduList (text, 0)}
+            />
+          </View>
+          <View style={styles.textInput}>
+            <TextBox
+              text="학교"
+              value={this.state.educationList[1]}
+              onChangeText={text => this._updateEduList (text, 1)}
+            />
+          </View>
+          <View style={styles.textInput}>
+            <TextBox
+              text="학교"
+              value={this.state.educationList[2]}
+              onChangeText={text => this._updateEduList (text, 2)}
             />
           </View>
 
           <Subtitle subtitle="자격증" />
+          <View style={styles.textInput}>
+            <TextBox
+              text="자격증"
+              value={this.state.lisenceList[0]}
+              onChangeText={text => this._updateLisenceList (text, 0)}
+            />
+          </View>
+          <View style={styles.textInput}>
+            <TextBox
+              text="자격증"
+              value={this.state.lisenceList[1]}
+              onChangeText={text => this._updateLisenceList (text, 1)}
+            />
+          </View>
+          <View style={styles.textInput}>
+            <TextBox
+              text="자격증"
+              value={this.state.lisenceList[2]}
+              onChangeText={text => this._updateLisenceList (text, 2)}
+            />
+          </View>
           <TwoButton
             Left="작성완료"
             LeftOnPress={this._CreateButton}
@@ -171,7 +192,24 @@ export default class WriteMyInfo extends Component {
   };
 
   _CreateButton = async () => {
-    alert ('작성완료');
+    console.log ('작성 완료');
+    alert (`userID : ${this.state.userId}\n
+    nickname : ${this.state.nickname}\n
+    educationList : ${this.state.educationList}\n
+    lisenceList : ${this.state.lisenceList}\n
+    category : ${this.state.category}`);
+  };
+
+  _updateEduList = (text, index) => {
+    let newArray = [...this.state.educationList];
+    newArray[index] = text;
+    this.setState ({educationList: newArray});
+  };
+
+  _updateLisenceList = (text, index) => {
+    let newArray = [...this.state.lisenceList];
+    newArray[index] = text;
+    this.setState ({lisenceList: newArray});
   };
 
   _DesignButton = async () => {
@@ -277,5 +315,9 @@ const styles = StyleSheet.create ({
     height: 200,
     justifyContent: 'center',
     alignItems: 'center',
+  },
+  textInput: {
+    height: 70,
+    borderBottomWidth: 0.3,
   },
 });

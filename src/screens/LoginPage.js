@@ -135,7 +135,7 @@ export default class LoginPage extends Component {
     return (
       <KeyboardAvoidingView behavior="height" style={styles.container}>
         {/* --------------------- 로고부분 ---------------------- */}
-        <View style={{flex: 1}}>
+        <KeyboardAvoidingView behavior="padding" style={{flex: 1}}>
           <Animated.View
             style={{
               alignItems: 'center',
@@ -148,7 +148,7 @@ export default class LoginPage extends Component {
             />
             <Text style={styles.sloganText}>LIKE A PING - PONG TABLE</Text>
           </Animated.View>
-        </View>
+        </KeyboardAvoidingView>
         {/* --------------------- 로고부분 ---------------------- */}
         <View style={{flex: 1, justifyContent: 'center'}}>
           <TapGestureHandler onHandlerStateChange={this.onStateChange}>
