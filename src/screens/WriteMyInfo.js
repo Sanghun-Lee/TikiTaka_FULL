@@ -54,9 +54,31 @@ export default class WriteMyInfo extends Component {
       music: false,
       engineer: false,
       study: false,
-      etc: false
+      etc: false,
+
+      eduGetDate: [],
+      eduThings: [],
+      careerGetDate: [],
+      careerThings: []
     };
   }
+
+  // getData() {
+  //   this.state.educationList.map(edu => {
+  //     eduGetDate.concat(edu.getDate);
+  //     eduThings.concat(edu.things);
+  //   });
+
+  //   this.state.careerList.map(career => {
+  //     careerGetDate.concat(career.getDate);
+  //     careerThings.concat(career.things);
+  //   });
+
+  //   console.log(`eduGetDate : ${this.state.eduGetDate}
+  //   eduThings : ${eduThings}
+  //   careerGetDate : ${careerGetDate}
+  //   careerThings : ${careerThings}`);
+  // }
 
   render() {
     return (
@@ -95,7 +117,7 @@ export default class WriteMyInfo extends Component {
               프리랜서로 등록해 보세요
             </Text>
           ) : (
-            <View>
+            <View style={{ flex: 1 }}>
               <Subtitle subtitle="한 줄 소개" />
               <TextInput
                 multiline={true}
@@ -167,101 +189,43 @@ export default class WriteMyInfo extends Component {
                 value={this.state.grade}
                 onChangeText={grade => this.setState({ grade })}
               />
-              <View style={styles.textInput}>
-                <TextBox
-                  text="학교"
-                  value={this.state.educationList[0].things}
-                  onChangeText={text => this._updateEduList(text, 0)}
-                />
-                <TextBox
-                  text="날짜"
-                  value={this.state.educationList[0].getDate}
-                  onChangeText={text => this._updateEduList(text, 0)}
-                />
-              </View>
-              <View style={styles.textInput}>
-                <TextBox
-                  text="학교"
-                  value={this.state.educationList[1].things}
-                  onChangeText={text => this._updateEduList(text, 1)}
-                />
-                <TextBox
-                  text="날짜"
-                  value={this.state.educationList[1].getDate}
-                  onChangeText={text => this._updateEduList(text, 1)}
-                />
-              </View>
-              <View style={styles.textInput}>
-                <TextBox
-                  text="학교"
-                  value={this.state.educationList[2].things}
-                  onChangeText={text => this._updateEduList(text, 2)}
-                />
-                <TextBox
-                  text="날짜"
-                  value={this.state.educationList[2].getDate}
-                  onChangeText={text => this._updateEduList(text, 2)}
-                />
-              </View>
+              <TextBox
+                text="학교"
+                value={this.state.educationList[0].things}
+                onChangeText={text => this._updateEduList(text, 0)}
+              />
+              <TextBox
+                text="날짜"
+                value={this.state.educationList[0].getDate}
+                onChangeText={text => this._updateEduList(text, 0)}
+              />
               <Subtitle subtitle="자격증" />
-              <View style={styles.textInput}>
-                <TextBox
-                  text="자격증"
-                  value={this.state.lisenceList[0]}
-                  onChangeText={text => this._updateLisenceList(text, 0)}
-                />
-              </View>
-              <View style={styles.textInput}>
-                <TextBox
-                  text="자격증"
-                  value={this.state.lisenceList[1]}
-                  onChangeText={text => this._updateLisenceList(text, 1)}
-                />
-              </View>
-              <View style={styles.textInput}>
-                <TextBox
-                  text="자격증"
-                  value={this.state.lisenceList[2]}
-                  onChangeText={text => this._updateLisenceList(text, 2)}
-                />
-              </View>
+              <TextBox
+                text="자격증1"
+                value={this.state.lisenceList[0]}
+                onChangeText={text => this._updateLisenceList(text, 0)}
+              />
+              <TextBox
+                text="자격증2"
+                value={this.state.lisenceList[1]}
+                onChangeText={text => this._updateLisenceList(text, 1)}
+              />
+              <TextBox
+                text="자격증3"
+                value={this.state.lisenceList[2]}
+                onChangeText={text => this._updateLisenceList(text, 2)}
+              />
               <Subtitle subtitle="경력" />
-              <View style={styles.textInput}>
-                <TextBox
-                  text="경력"
-                  value={this.state.careerList[1].things}
-                  onChangeText={text => this._updateEduList(text, 1)}
-                />
-                <TextBox
-                  text="날짜"
-                  value={this.state.careerList[1].getDate}
-                  onChangeText={text => this._updateEduList(text, 1)}
-                />
-              </View>
-              <View style={styles.textInput}>
-                <TextBox
-                  text="경력"
-                  value={this.state.careerList[1].things}
-                  onChangeText={text => this._updateEduList(text, 1)}
-                />
-                <TextBox
-                  text="날짜"
-                  value={this.state.careerList[1].getDate}
-                  onChangeText={text => this._updateEduList(text, 1)}
-                />
-              </View>
-              <View style={styles.textInput}>
-                <TextBox
-                  text="경력"
-                  value={this.state.careerList[1].things}
-                  onChangeText={text => this._updateEduList(text, 1)}
-                />
-                <TextBox
-                  text="날짜"
-                  value={this.state.careerList[1].getDate}
-                  onChangeText={text => this._updateEduList(text, 1)}
-                />
-              </View>
+              <TextBox
+                text="경력"
+                value={this.state.careerList[0].things}
+                onChangeText={text => this._updateEduList(text, 0)}
+              />
+              <TextBox
+                text="날짜"
+                value={this.state.careerList[0].getDate}
+                onChangeText={text => this._updateEduList(text, 1)}
+              />
             </View>
           )}
           <TwoButton
@@ -279,22 +243,48 @@ export default class WriteMyInfo extends Component {
     this.props.navigation.goBack();
   };
 
-  _toggleSwitch = value => {
+  _toggleSwitch = async value => {
     this.setState({ freeflag: value });
+    await educationList.map(edu => {
+      this.setState({
+        eduGetDate: this.state.eduGetDate.concat(edu.getDate),
+        eduThings: this.state.eduThings.concat(edu.things)
+      });
+    });
+
+    await careerList.map(career => {
+      this.setState({
+        careerGetDate: this.state.careerGetDate.concat(career.getDate),
+        careerThings: this.state.careerThings.concat(career.things)
+      });
+    });
+
+    console.log(`eduGetDate : ${eduGetDate}
+    eduThings : ${eduThings}
+    careerGetDate : ${careerGetDate}
+    careerThings : ${careerThings}`);
   };
 
-  _CreateButton = async () => {
-    console.log("작성 완료");
-    alert(`userID : ${this.state.userId}
-    nickname : ${this.state.nickname}
-    educationList : ${this.state.educationList}
-    lisenceList : ${this.state.lisenceList}
-    category : ${this.state.category}`);
+  _update = (text, index) => {
+    const newArray = [...this.state.educationList];
+    newArray[index].getDate = text;
+    this.setState({ educationList: newArray });
+  };
+
+  _CreateButton = () => {
+    alert("작성완료" + this.state.intro);
+    console.log(this.state.intro);
   };
 
   _updateEduList = (text, index) => {
     let newArray = [...this.state.educationList];
-    newArray[index] = text;
+    newArray[index].getDate = text;
+    this.setState({ educationList: newArray });
+  };
+
+  _updateEduName = (text, index) => {
+    let newArray = [...this.state.educationList];
+    newArray[index].things = text;
     this.setState({ educationList: newArray });
   };
 
@@ -304,6 +294,7 @@ export default class WriteMyInfo extends Component {
     this.setState({ lisenceList: newArray });
   };
 
+  ////////////////////////////////////////////////////
   _DesignButton = async () => {
     await this.setState(prevState => {
       return { design: !prevState.design };
