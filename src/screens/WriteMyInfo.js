@@ -5,6 +5,8 @@ import {
   StyleSheet,
   TextInput,
   ScrollView,
+  Image,
+  TouchableOpacity,
   KeyboardAvoidingView
 } from "react-native";
 
@@ -26,7 +28,7 @@ export default class WriteMyInfo extends Component {
       location: "대구",
       organization: "영남대학교",
       ////////////////////////////////////
-      freeflag: 0,
+      freeflag: 1,
       intro: "hello nice to meet you",
       grade: "4",
       category: [],
@@ -116,6 +118,48 @@ export default class WriteMyInfo extends Component {
             value={this.state.location}
             onChangeText={location => this.setState({ location })}
           />
+          <View
+            style={{
+              flexDirection: "row",
+              backgroundColor: "white",
+              borderBottomColor: "#999999",
+              borderBottomWidth: 0.5,
+              height: 54
+            }}
+          >
+            <Text
+              style={{
+                flex: 5,
+                color: "#040505",
+                fontSize: 18,
+                marginLeft: 20,
+                textAlignVertical: "center",
+                fontWeight: "bold"
+              }}
+            >
+              프리랜서 여부
+            </Text>
+            <TouchableOpacity
+              style={{ width: 50, height: 25, marginRight: 40, marginTop: 10 }}
+              onPress={() => {
+                this.setState(prevState => {
+                  return { freeflag: !prevState.freeflag };
+                });
+              }}
+            >
+              {this.state.freeflag ? (
+                <Image
+                  source={require("../../assets/images/Setting/SettingEnable.png")}
+                  style={{ width: 49.5, height: 20.5 }}
+                />
+              ) : (
+                <Image
+                  source={require("../../assets/images/Setting/SettingDisable.png")}
+                  style={{ width: 49.5, height: 20.5 }}
+                />
+              )}
+            </TouchableOpacity>
+          </View>
           <SettingItem
             SettingContext="프리랜서 여부"
             switchValues={this.state.freeflag}
