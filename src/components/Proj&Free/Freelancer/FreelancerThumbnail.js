@@ -14,6 +14,10 @@ export default class FreelancerThumbnail extends Component {
     isFavorite: false
   };
 
+  static defaultProps = {
+    lisence: ""
+  };
+
   render() {
     const { isFavorite } = this.state;
 

@@ -56,10 +56,19 @@ export default class WriteMyInfo extends Component {
       study: false,
       etc: false,
 
-      eduGetDate: [],
-      eduThings: [],
-      careerGetDate: [],
-      careerThings: []
+      eduDate_0: "",
+      eduThings_0: "",
+      eduDate_1: "",
+      eduThings_1: "",
+      eduDate_2: "",
+      eduThings_2: "",
+
+      carDate_0: "",
+      carThings_0: "",
+      carDate_1: "",
+      carThings_1: "",
+      carDate_2: "",
+      carThings_2: ""
     };
   }
 
@@ -191,13 +200,33 @@ export default class WriteMyInfo extends Component {
               />
               <TextBox
                 text="학교"
-                value={this.state.educationList[0].things}
-                onChangeText={text => this._updateEduList(text, 0)}
+                value={this.state.eduThings_0}
+                onChangeText={text => this.setState({ eduThings_0: text })}
               />
               <TextBox
                 text="날짜"
-                value={this.state.educationList[0].getDate}
-                onChangeText={text => this._updateEduList(text, 0)}
+                value={this.state.eduDate_0}
+                onChangeText={text => this.setState({ eduDate_0: text })}
+              />
+              <TextBox
+                text="학교"
+                value={this.state.eduThings_1}
+                onChangeText={text => this.setState({ eduThings_1: text })}
+              />
+              <TextBox
+                text="날짜"
+                value={this.state.eduDate_1}
+                onChangeText={text => this.setState({ eduDate_1: text })}
+              />
+              <TextBox
+                text="학교"
+                value={this.state.eduThings_2}
+                onChangeText={text => this.setState({ eduThings_2: text })}
+              />
+              <TextBox
+                text="날짜"
+                value={this.state.eduDate_2}
+                onChangeText={text => this.setState({ eduDate_2: text })}
               />
               <Subtitle subtitle="자격증" />
               <TextBox
@@ -218,13 +247,33 @@ export default class WriteMyInfo extends Component {
               <Subtitle subtitle="경력" />
               <TextBox
                 text="경력"
-                value={this.state.careerList[0].things}
-                onChangeText={text => this._updateEduList(text, 0)}
+                value={this.state.carThings_0}
+                onChangeText={text => this.setState({ carThings_0: text })}
               />
               <TextBox
                 text="날짜"
-                value={this.state.careerList[0].getDate}
-                onChangeText={text => this._updateEduList(text, 1)}
+                value={this.state.carDate_0}
+                onChangeText={text => this.setState({ carDate_0: text })}
+              />
+              <TextBox
+                text="경력"
+                value={this.state.carThings_1}
+                onChangeText={text => this.setState({ carThings_1: text })}
+              />
+              <TextBox
+                text="날짜"
+                value={this.state.carDate_1}
+                onChangeText={text => this.setState({ carDate_1: text })}
+              />
+              <TextBox
+                text="경력"
+                value={this.state.carThings_2}
+                onChangeText={text => this.setState({ carThings_2: text })}
+              />
+              <TextBox
+                text="날짜"
+                value={this.state.carDate_2}
+                onChangeText={text => this.setState({ carDate_2: text })}
               />
             </View>
           )}
@@ -245,47 +294,75 @@ export default class WriteMyInfo extends Component {
 
   _toggleSwitch = async value => {
     this.setState({ freeflag: value });
-    await educationList.map(edu => {
-      this.setState({
-        eduGetDate: this.state.eduGetDate.concat(edu.getDate),
-        eduThings: this.state.eduThings.concat(edu.things)
-      });
-    });
+    if (this.state.educationList[0] !== undefined) {
+      this.setState({ eduDate_0: this.state.educationList[0].getDate });
+      this.setState({ eduThings_0: this.state.educationList[0].things });
+    }
+    if (this.state.educationList[1] !== undefined) {
+      this.setState({ eduDate_1: this.state.educationList[1].getDate });
+      this.setState({ eduThings_1: this.state.educationList[1].things });
+    }
+    if (this.state.educationList[2] !== undefined) {
+      this.setState({ eduDate_2: this.state.educationList[2].getDate });
+      this.setState({ eduThings_2: this.state.educationList[2].things });
+    }
 
-    await careerList.map(career => {
-      this.setState({
-        careerGetDate: this.state.careerGetDate.concat(career.getDate),
-        careerThings: this.state.careerThings.concat(career.things)
-      });
-    });
-
-    console.log(`eduGetDate : ${eduGetDate}
-    eduThings : ${eduThings}
-    careerGetDate : ${careerGetDate}
-    careerThings : ${careerThings}`);
-  };
-
-  _update = (text, index) => {
-    const newArray = [...this.state.educationList];
-    newArray[index].getDate = text;
-    this.setState({ educationList: newArray });
+    if (this.state.careerList[0] !== undefined) {
+      this.setState({ carDate_0: this.state.careerList[0].getDate });
+      this.setState({ carThings_0: this.state.careerList[0].things });
+    }
+    if (this.state.careerList[1] !== undefined) {
+      this.setState({ carDate_0: this.state.careerList[1].getDate });
+      this.setState({ carThings_0: this.state.careerList[1].things });
+    }
+    if (this.state.careerList[2] !== undefined) {
+      this.setState({ carDate_0: this.state.careerList[2].getDate });
+      this.setState({ carThings_0: this.state.careerList[2].things });
+    }
   };
 
   _CreateButton = () => {
-    alert("작성완료" + this.state.intro);
-    console.log(this.state.intro);
-  };
-
-  _updateEduList = (text, index) => {
-    let newArray = [...this.state.educationList];
-    newArray[index].getDate = text;
-    this.setState({ educationList: newArray });
-  };
-
-  _updateEduName = (text, index) => {
-    let newArray = [...this.state.educationList];
-    newArray[index].things = text;
-    this.setState({ educationList: newArray });
+    if (this.state.eduDate_0 !== "") {
+      let newArray = [...this.state.educationList];
+      newArray[0].getDate = this.state.eduDate_0;
+      newArray[0].things = this.state.eduThings_0;
+      this.setState({ educationList: newArray });
+    }
+    if (this.state.eduDate_1 !== "") {
+      let newArray = [...this.state.educationList];
+      newArray[1].getDate = this.state.eduDate_1;
+      newArray[1].things = this.state.eduThings_1;
+      this.setState({ educationList: newArray });
+    }
+    if (this.state.eduDate_2 !== "") {
+      let newArray = [...this.state.educationList];
+      let tmp = {
+        getDate: this.state.eduDate_2,
+        things: this.state.eduThings_0
+      };
+      newArray[2] = tmp;
+      this.setState({ educationList: newArray });
+    }
+    if (this.state.carDate_0 !== "") {
+      let newArray = [...this.state.educationList];
+      newArray[0].getDate = this.state.carDate_0;
+      newArray[0].things = this.state.carThings_0;
+      this.setState({ educationList: newArray });
+    }
+    if (this.state.carDate_1 !== "") {
+      let newArray = [...this.state.educationList];
+      newArray[1].getDate = this.state.carDate_1;
+      newArray[1].things = this.state.carThings_1;
+      this.setState({ educationList: newArray });
+    }
+    if (this.state.carDate_2 !== "") {
+      let newArray = [...this.state.educationList];
+      newArray[2].getDate = this.state.carDate_2;
+      newArray[2].things = this.state.carThings_2;
+      this.setState({ educationList: newArray });
+    }
+    alert("작성완료");
+    console.log(this.state.educationList);
   };
 
   _updateLisenceList = (text, index) => {

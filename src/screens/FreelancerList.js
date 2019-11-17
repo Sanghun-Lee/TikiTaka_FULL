@@ -10,7 +10,7 @@ import FilterButton from "../components/Proj&Free/common/FilterButton";
 
 const freelancerList = [
   {
-    lisence: ["6시그마", "정보처리기사"],
+    lisence: [],
     organization: "영남대학교",
     grade: 3,
     intro: "저는 영남대학교의 산업 디자인과에 다니고 있습니다."
